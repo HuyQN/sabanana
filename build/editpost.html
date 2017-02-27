@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+         any other head content must come *after* these tags -->
+    <title>Editing Post</title>
+
+    <!-- Bootstrap's CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/editpost.css" rel="stylesheet">
+  </head>
+  <body>
+    <style>
+    body{background-color: #DEEFF5}
+    </style>
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+    <!-- This code is only active when viewing the site on mobile. We will not
+         cover responsive design, but we'll leave this in, as it's part of the
+         example code.-->
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed navbar-bt" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <!-- The Sabanana logo -->
+            <img src="img/SabananaLogo.png" style= "width:75px;height:30px;">
+          </a>
+        </div>
+
+        <!-- On mobile, this div is hidden by default. The user hits the button
+          in the `navbar-header` to see the content of the div.
+          On desktop, this div is visible all of the time. -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" role="search">
+              <!-- Left-aligned items. -->
+              <div class="input-group">
+                <input type="text" class="form-control fb-search" placeholder="Search...">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </span>
+              </div>
+            </form>
+            <div class="nav navbar-nav navbar-right">
+              <!-- Right-aligned items -->
+              <div class="btn-toolbar pull-right" role="toolbar">
+                <div class="bt  n-group" role="group">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle navbar-btn"
+                    data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">User Settings</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Log out</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+    <!-- End navbar -->
+
+
+    <!-- Core -->
+    <div class="container">
+      <div class="row">
+        <!-- Title Area -->
+        <div class="col-md-1">
+          Title:
+        </div>
+        <!-- box -->
+        <div class="col-md-5 box">
+          <div class="form-group">
+            <textarea class="form-control" rows="1"
+              placeholder="Insert Title Here">
+              Current Title here
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <!-- Description Area-->
+      <div class="row">
+        <div class="col-md-1">
+          Description:
+        </div>
+        <!-- Description box-->
+        <div class="col-md-7">
+          <div class="form-group">
+            <textarea class="form-control " rows="6"
+              placeholder="Insert Description Here">
+              Current Description Here
+            </textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tag Area-->
+      <div class="row">
+        <div class="col-md-1">
+          Tags:
+        </div>
+      <!-- Tags -->
+        <div class="col-md-7">
+          <button type ="button" class ="btn btn-default">
+            Board Games
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Sports
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Music
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Studying
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Video Games
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Selling
+          </button>
+          <button type ="button" class ="btn btn-default">
+            Buying
+          </button>
+        </div>
+      <!-- End of Tags -->
+      </div>
+      <!-- Others tag -->
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-1">
+          Other Tag:
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Other Tags">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+         <p>
+      </div>
+
+      <div class ="row"><p>
+        <div class ="col-md-6">
+          <!-- Post button -->
+          <button type ="button" class="btn btn-default">
+            Done
+          </button>
+        </div>
+        <!-- End of Done button and start of delete button-->
+        <div class ="col-md-1">
+          <button type ="button" class="btn btn-default">
+            Delete
+          </button>
+        </div>
+        <!-- end of delete button -->
+      </div>
+      <!-- end of buttons -->
+
+    </div>
+    <!-- end of container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below),
+         or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
