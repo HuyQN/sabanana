@@ -1,5 +1,7 @@
 body {
   padding-top: 70px;
+  background-color: #ECF8E0;
+
 }
 .starter-template {
   padding: 40px 15px;
@@ -16,4 +18,161 @@ body {
 
 .tags {
 	padding-left: 10px;
+}
+
+.thumbnail {
+	background-color: inherit;
+	border: none;
+}
+
+
+// copied from UserSettings
+body {
+  padding-top: 60px;
+  /* I figured out the background color using Chrome's Inspect tool. */
+  background-color: #ECF8E0;
+}
+.fb-search {
+  width: 485px !important;
+}
+.fb-status-update-entry textarea {
+  resize: none;
+  /* Needs to be !important, since Bootstrap sets this elsewhere. */
+  box-shadow: none !important;
+  border: none;
+}
+.fb-status-update-entry .media {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  /* Adds whitespace between bottom border and buttons */
+  margin-bottom: 10px;
+  /* Adds whitespace between top of media object and top border. */
+  padding-top: 5px;
+}
+.fb-status-update hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* The color of `hr` is set by its top border color.
+     Yeah, it's weird. */
+  border-top: 1px solid lightgray;
+}
+.fb-status-update .list-inline {
+  margin-bottom: 0px;
+}
+
+.fb-status-update .panel-body {
+  padding-bottom: 5px;
+}
+/* Makes links dark blue, even if they have been visited. (By default, the
+   browser will change the look of visited links.) */
+a,
+a:visited {
+  /* The color Facebook uses. */
+  color: #3b5998;
+  font-weight: bold;
+}
+/* Blue background */
+.navbar {
+  background-color: #F5DA81;
+}
+
+/* Make house logo white, even if the user hovers over it */
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover {
+  color: white;
+}
+
+/* Remove the background color and border of all navbar buttons. Make their
+   color dark blue, like Facebook. */
+.navbar button {
+  background-color: transparent;
+  border: none;
+  color: #2e467c;
+}
+
+/* Make buttons slightly darker when the user hovers over it, like Facebook
+  does. */
+.navbar button:hover {
+  background-color: transparent;
+  color: #22345c;
+  border: none;
+}
+
+/* Make the button white if clicked on, and remain white after clicking.
+   Facebook normally opens up a menu when you do this.
+   :active = user is currently interacting with the button.
+   :focus = user is currently interacting or has just interacted with the
+   button.
+   :active:focus = both at the same time
+   We have to override all of these combinations, since Bootstrap has separate
+   rules for them.*/
+.navbar button:active,
+.navbar button:focus,
+.navbar button:active:focus {
+  background-color: transparent;
+  color: white;
+  border: none;
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+/* Search button style -- overrides the above two rules for the search
+   button */
+.navbar form button,
+.navbar form button:hover,
+.navbar form button:focus,
+.navbar form button:active,
+.navbar form button:active:focus {
+  background-color: lightgrey;
+  color: black;
+  /* Make it a bit wider. */
+  width: 50px;
+  /* Make the border's curve more gentle */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* Apply a light-grey border color. You can specify colors as names, rgb
+     triplets, or hex numbers. */
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+/* Navbar button style when the button has notifications.
+   Apply same style when the user is hovering the mouse over the button. */
+button.fb-notifications,
+button.fb-notifications:hover {
+  color: white;
+}
+
+/* Make the Bootstrap badges more Facebook-style in the navbar */
+.navbar .badge {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid black;
+  /* Offset the badge a bit so it hovers over the glyphicon. */
+  right: 8px;
+  top: -10px;
+}
+
+/* Make the "John" and "Home" buttons white. Would probably be cleaner
+   using a CSS class! */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button
+{
+  color: white;
+}
+
+/* Make the "John" and "Home" buttons have a dark blue background when
+   hovered over. */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button:hover,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button:hover
+{
+  background-color: #2e467c;
 }
