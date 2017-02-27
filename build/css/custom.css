@@ -1,0 +1,19 @@
+body {
+  padding-top: 70px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.navbar-brand {
+	padding: 7px 15px;
+}
+
+.posts li {
+	padding: 5px 0px;
+}
+
+.tags {
+	padding-left: 10px;
+}
