@@ -17,12 +17,28 @@ body {
   color: white;
 }
 
+.other-box{
+  width: 200px;
+  height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.text-box textarea{
+  resize: none !important;
+  box-shadow: none !important;
+}
+
 /* Remove the background color and border of all navbar buttons. Make their
    color dark blue, like Facebook. */
 .navbar button {
   background-color: transparent;
   border: none;
   color: #2e467c;
+}
+
+.bold{
+  font-weight:bold;
 }
 
 /* Make buttons slightly darker when the user hovers over it, like Facebook
