@@ -15,7 +15,7 @@
   </head>
   <body>
     <style>
-    body{background-color: #DEEFF5}
+    body{background-color: #7ebdc2}
     </style>
 
     <!-- Navbar-->
@@ -83,30 +83,26 @@
       <div class="row">
         <!-- Title Area -->
         <div class="col-md-1">
-          Title:
+          <span class="bold">Title: </span>
         </div>
         <!-- box -->
-        <div class="col-md-5 box">
-          <div class="form-group">
-            <textarea class="form-control" rows="1"
-              placeholder="Insert Title Here">
-              Current Title here
-            </textarea>
+        <div class="col-md-5">
+          <div class="form-group text-box">
+            <!-- long line of text to prevent weird character getting in-->
+            <textarea class="form-control" rows="1"placeholder="Insert Title Here">Current Title here</textarea>
           </div>
         </div>
       </div>
       <!-- Description Area-->
       <div class="row">
         <div class="col-md-1">
-          Description:
+          <span class="bold">Description: </span>
         </div>
         <!-- Description box-->
         <div class="col-md-7">
-          <div class="form-group">
-            <textarea class="form-control " rows="6"
-              placeholder="Insert Description Here">
-              Current Description Here
-            </textarea>
+          <div class="form-group text-box">
+            <!-- long line of text to prevent weird character getting in-->
+            <textarea class="form-control " rows="6"placeholder="Insert Description Here">Current Description Here</textarea>
           </div>
         </div>
       </div>
@@ -114,7 +110,7 @@
       <!-- Tag Area-->
       <div class="row">
         <div class="col-md-1">
-          Tags:
+          <span class="bold">Tags: </span>
         </div>
       <!-- Tags -->
         <div class="col-md-7">
@@ -139,29 +135,15 @@
           <button type ="button" class ="btn btn-default">
             Buying
           </button>
-        </div>
-      <!-- End of Tags -->
-      </div>
-      <!-- Others tag -->
-      <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-1">
-          Other Tag:
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
+          <div class="form-group other-box">
             <input type="text" class="form-control" placeholder="Other Tags">
           </div>
         </div>
+      <!-- End of Tags -->
       </div>
 
-      <div class="row">
-         <p>
-      </div>
-
-      <div class ="row"><p>
-        <div class ="col-md-6">
+      <div class ="row">
+        <div class ="col-md-7">
           <!-- Post button -->
           <button type ="button" class="btn btn-default">
             Done
