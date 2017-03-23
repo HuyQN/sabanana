@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Each major browser view user interface must be imported.
-import User from './components/user.js'
+import User from './components/User.js'
 import UI02 from './components/ui-02.js'
 
 // For each view conditionally determine which view to display
