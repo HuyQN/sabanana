@@ -1,38 +1,6 @@
 import React from 'react'
 
-function NavBar (props) {
-  return (
-    <nav className='navbar navbar-default navbar-fixed-top'>
-      <div className='container'>
-        <div className='navbar-header'>
-          <button type='button' className='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>
-            <span className='sr-only'>Toggle navigation</span>
-            <span className='icon-bar' />
-            <span className='icon-bar' />
-            <span className='icon-bar' />
-          </button>
-          <a className='navbar-brand' href='#'>
-            <img alt='Brand' src='img/logo.png' height='36px' />
-          </a>
-        </div>
-        <div id='navbar' className='collapse navbar-collapse'>
-
-          <form className='navbar-form navbar-left'>
-            <div className='form-group'>
-              <input type='text' className='form-control' placeholder='Search' />
-            </div>
-          </form>
-          <ul className='nav navbar-nav navbar-right'>
-
-            <li><a href='#'>
-              <span className='glyphicon glyphicon-cog' aria-hidden='true' />
-            </a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  )
-}
+import NavBar from './NavBar'
 
 function Tag ({name}) {
   return <a href='#'><em className='text-info'>{name}</em></a>

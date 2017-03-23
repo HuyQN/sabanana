@@ -25,6 +25,11 @@ body {
 	border: none;
 }
 
+.navbar-brand img {
+  width:75px;
+  height:30px;
+}
+
 
 // copied from UserSettings
 body {
