@@ -6,6 +6,7 @@ import AddPost from './components/addpost.js'
 import EditPost from './components/editpost.js'
 import User from './components/User.js'
 import NavBar from './components/NavBar.js'
+import Search from './components/search.js'
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
@@ -23,6 +24,11 @@ if (document.getElementById('user') !== null) {
   ReactDOM.render(
     <EditPost title="Current Title" description="Current Description"></EditPost>,
     document.getElementById('edit-post')
+  );
+} else if (document.getElementById('search') !== null){
+  ReactDOM.render(
+    <Search />,
+    document.getElementById('search')
   );
 }
 
