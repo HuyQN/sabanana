@@ -9,25 +9,16 @@ class Tagbar extends React.Component {
         <ul className="nav">
           <li role="presentation">TAGS</li>
 
-          <li role="presentation">
-            <a href="#">Board Games</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Sports</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Music</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Computers</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Clothes</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Language</a>
-          </li>
-          
+          {React.Children.map(this.props.children, function(child) {
+             return (
+               <li role="presentation">
+                 <a href="#">
+                   {child.props.tag}
+                 </a>
+               </li>
+             )
+           })}
+        
         </ul>
       </div>
     );
@@ -64,7 +55,14 @@ class Main extends React.Component {
     return (
       <div className="container-fluid">
         <div className="clearfix">
-          <Tagbar />
+          <Tagbar>
+            <p tag="Board Games" />
+            <p tag="Sports" />
+            <p tag="Music" />
+            <p tag="Computers" />
+            <p tag="Clothes" />
+            <p tag="Language" />
+          </Tagbar>
           <Results />
         </div>
       </div>
