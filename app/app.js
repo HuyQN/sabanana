@@ -19,14 +19,14 @@ if (document.getElementById('user') !== null) {
     <AddPost />,
     document.getElementById('add-post')
   );
-} else if(document.getElementById('edit-post') !== null){
+} else if (document.getElementById('edit-post') !== null){
   ReactDOM.render(
     <EditPost title="Current Title" description="Current Description"></EditPost>,
     document.getElementById('edit-post')
   );
 }
 
-if(document.getElementById('nav') !== null){
+if (document.getElementById('nav') !== null){
   ReactDOM.render(
     <Nav />,
     document.getElementById('nav')
