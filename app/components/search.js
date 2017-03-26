@@ -1,59 +1,84 @@
 import React from 'react';
 
+import NavBar from './NavBar.js'
+
+class Tagbar extends React.Component {
+  render() {
+    return (
+      <div className="col-md-2 panel panel-default tags">
+        <ul className="nav">
+          <li role="presentation">TAGS</li>
+
+          <li role="presentation">
+            <a href="#">Board Games</a>
+          </li>
+          <li role="presentation">
+            <a href="#">Sports</a>
+          </li>
+          <li role="presentation">
+            <a href="#">Music</a>
+          </li>
+          <li role="presentation">
+            <a href="#">Computers</a>
+          </li>
+          <li role="presentation">
+            <a href="#">Clothes</a>
+          </li>
+          <li role="presentation">
+            <a href="#">Language</a>
+          </li>
+          
+        </ul>
+      </div>
+    );
+  }
+}
+
+class Results extends React.Component {
+  render() {
+    return (
+      <div className="col-md-10">
+        <div className="panel panel-default">
+          <div className="panel-body .search-text">
+            <text>Search results for: "</text>
+            <text>Tennis</text>
+            <text>"</text>
+          </div>
+        </div>
+
+        <div className="panel panel-default">
+          <div className="panel-body .search-text">
+            <p>Looking for a tennis buddy! Thursdays at 2:00 would be great.</p>
+            <p>Username: TennisLover</p>
+            <p>Location: Amherst</p>
+            <p>Posted: 2/27/17 12:00</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Main extends React.Component {
+  render() {
+    return (
+      <div className="container-fluid">
+        <div className="clearfix">
+          <Tagbar />
+          <Results />
+        </div>
+      </div>
+    );
+  }
+}
+
 export default class Search extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
-        <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="#">
-
-              <img alt="Brand" src="img/logo.png" height="36px" />
-            </a>
-          </div>
-          <div id="navbar" className="collapse navbar-collapse">
-
-
-            <div className="nav navbar-nav navbar-right">
-              <div className="btn-toolbar pull-right" role="toolbar">
-                <div className="btn-group" role="group">
-                  <div className="btn-group" role="group">
-                    <button type="button" className="btn btn-default dropdown-toggle navbar-btn"
-                            data-toggle="dropdown">
-                      <span className="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </button>
-                    <ul className="dropdown-menu">
-                      <li><a href="#">Profile</a></li>
-                      <li><a href="#">User Settings</a></li>
-                      <li><a href="#">Messages</a></li>
-                      <li><a href="#">Log out</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <form className="navbar-form navbar-right" role="search">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Search Sabanana" />
-                <span className="input-group-btn">
-                  <button type="submit" className="btn btn-default">
-                    <span className="glyphicon glyphicon-search"></span>
-                  </button>
-                </span>
-              </div>
-            </form>
-
-          </div>
-        </div>
-      </nav>
+      <div>
+        <NavBar />
+        <Main />
+      </div>
     );
   }
 }
