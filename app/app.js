@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import AddPost from './components/addpost.js'
 import EditPost from './components/editpost.js'
 import User from './components/User.js'
-import Nav from './components/NavBar.js'
+import NavBar from './components/NavBar.js'
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
@@ -28,7 +28,7 @@ if (document.getElementById('user') !== null) {
 
 if (document.getElementById('nav') !== null){
   ReactDOM.render(
-    <Nav />,
+    <NavBar />,
     document.getElementById('nav')
   );
 }
