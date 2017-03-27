@@ -12,6 +12,7 @@ import Bio from './components/bio.js';
 import Viewedpost from './components/viewedpost.js';
 import Search from './components/search.js';
 import UserSettings from './components/settings.js'
+import Messages from './components/messages.js'
 
 
 // For each view conditionally determine which view to display
@@ -30,7 +31,7 @@ if (document.getElementById('user') !== null) {
   );
 } else if (document.getElementById('edit-post') !== null){
   ReactDOM.render(
-    <EditPost title="Current Title" description="Current Description"></EditPost>,
+    <EditPost />,
     document.getElementById('edit-post')
   );
 } else if (document.getElementById('search') !== null){
@@ -69,5 +70,11 @@ if (document.getElementById('settings') !== null){
   ReactDOM.render(
     <UserSettings />,
     document.getElementById('settings')
+  );
+}
+if (document.getElementById('Messages') !== null){
+  ReactDOM.render(
+    <Messages />,
+    document.getElementById('Messages')
   );
 }
