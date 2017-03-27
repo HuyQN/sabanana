@@ -6,18 +6,17 @@ const blist = ["Board Games","Sports","Music",
 
 export default class Buttons extends React.Component {
   render() {
-    var box = {width: 200, height: 50};
     return(
       <div>
         <div className="col-md-7">
           {blist.map(function(item){
             return(
-              <button type="button" className="btn btn-default">
+              <button type="button" className="btn btn-default tag-buttons">
                 {item}
               </button>
             )
           })}
-          <div className="form-group" style={box}>
+          <div className="form-group other-box" >
             <input type="text" className="form-control" placeholder="Other Tags"/>
           </div>
         </div>
