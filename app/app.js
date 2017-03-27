@@ -11,6 +11,7 @@ import NavBar from './components/NavBar.js';
 import Bio from './components/bio.js';
 import Viewedpost from './components/viewedpost.js';
 import Search from './components/search.js';
+import UserSettings from './components/settings.js'
 
 
 // For each view conditionally determine which view to display
@@ -61,5 +62,12 @@ if (document.getElementById('nav') !== null){
   ReactDOM.render(
     <NavBar />,
     document.getElementById('nav')
+  );
+}
+
+if (document.getElementById('settings') !== null){
+  ReactDOM.render(
+    <NavBar />,
+    document.getElementById('settings')
   );
 }
