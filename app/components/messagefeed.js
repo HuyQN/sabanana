@@ -4,7 +4,7 @@ export default class MessageFeed extends React.Component {
   render() {
     return (
       <div>
-        <div classname="col-md-10">
+        
           <div classname="panel-footer">
         
            <ul classname="media-list">
@@ -16,6 +16,7 @@ export default class MessageFeed extends React.Component {
                 <a href="#">Someone Else</a>: Are you still looking for a tennis partner?
               </div>
             </li>
+
             <li classname="media">
               <div classname="media-left media-top">
                 PIC
@@ -24,6 +25,7 @@ export default class MessageFeed extends React.Component {
                 <a href="#">You</a>: yes i am
               </div>
             </li>
+            
             <li classname="media">
               <div classname="media-left media-top">
                 PIC
@@ -32,6 +34,7 @@ export default class MessageFeed extends React.Component {
               <a href="#">Someone Else</a>: how about tuesday?
             </div>
             </li>
+            
             <li classname="media">
               <div classname="media-left media-top">
                 PIC
@@ -40,6 +43,7 @@ export default class MessageFeed extends React.Component {
                 <a href="#">You</a>: sounds good
               </div>
             </li>
+            
             <li classname="media">
               <div classname="media-left media-top">
                 PIC
@@ -56,9 +60,9 @@ export default class MessageFeed extends React.Component {
                 </div>
               </div>
             </li>
+          
           </ul>
         </div>
-      </div>
       </div>
     )
   }

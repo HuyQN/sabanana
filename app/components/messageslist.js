@@ -4,7 +4,7 @@ export default class Messageslist extends React.Component {
   render() {
     return (
       <div>
-        <div classname="col-md-2 fb-right-sidebar">
+        
           <div classname="row">
             <div classname="col-md-12">
               <div classname="media-left media-top">
@@ -14,7 +14,6 @@ export default class Messageslist extends React.Component {
               <a href="#">Someone</a>
             </div>
           </div>
-        </div>
 
         <div classname="row">
           <div classname="col-md-12">
@@ -44,8 +43,7 @@ export default class Messageslist extends React.Component {
           </div>
         </div>
       </div>
-      </div>
-
+</div>
     )
   }
 }

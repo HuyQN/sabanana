@@ -14,7 +14,7 @@
 body {
   padding-top: 60px;
   /* I figured out the background color using Chrome's Inspect tool. */
-  background-color: #e9eaed;
+  background-color: #ECF8E0;
 }
 .fb-search {
   width: 395px !important;
@@ -126,7 +126,7 @@ a:visited {
 }
 /* Blue background */
 .navbar {
-  background-color: #99ff99;
+  background-color: #F5DA81;
 }
 
 /* Make house logo white, even if the user hovers over it */

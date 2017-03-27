@@ -10,8 +10,12 @@ export default class Messages extends React.Component {
       <div>
       
         <NavBar />
-        <Messageslist />
-        <MessageFeed />
+        <div classname="col-md-2 fb-right-sidebar">
+        	<Messageslist />
+        </div>
+        <div classname="col-md-10">
+        	<MessageFeed />
+        </div>
 
       </div>
     )
