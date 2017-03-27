@@ -24,6 +24,11 @@ body {
   padding-bottom: 5px;
 }
 
+.tag-buttons{
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
 .text-box textarea{
   resize: none !important;
   box-shadow: none !important;
