@@ -49,11 +49,7 @@ class SearchResults extends React.Component {
             <text>Search results for: "{this.props.search_term}"</text>
           </div>
         </div>
-
-        <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                username="TennisLover"
-                location="Amherst"
-                post_date="2/27/17 12:00" />
+        {this.props.children}
       </div>
     );
   }
@@ -72,7 +68,24 @@ class Main extends React.Component {
             <p tag="Clothes" />
             <p tag="Language" />
           </Tagbar>
-          <SearchResults search_term="Tennis" />
+          <SearchResults search_term="Tennis">
+            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
+                    username="TennisLover"
+                    location="Amherst"
+                    post_date="2/27/17 12:00" />
+            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
+                    username="TennisLover"
+                    location="Amherst"
+                    post_date="2/27/17 12:00" />
+            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
+                    username="TennisLover"
+                    location="Amherst"
+                    post_date="2/27/17 12:00" />
+            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
+                    username="TennisLover"
+                    location="Amherst"
+                    post_date="2/27/17 12:00" />
+          </SearchResults>
         </div>
       </div>
     );
