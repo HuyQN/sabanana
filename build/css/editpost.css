@@ -1,0 +1,123 @@
+body {
+  padding-top: 60px;
+  /* I figured out the background color using Chrome's Inspect tool. */
+  background-color: #ECF8E0;
+}
+.fb-search {
+  width: 485px !important;
+}
+/* Blue background */
+.navbar {
+  background-color: #F5DA81;
+}
+
+/* Make house logo white, even if the user hovers over it */
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover {
+  color: white;
+}
+
+.other-box{
+  width: 200px;
+  height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* making the text boxes more appealing*/
+.text-box textarea{
+  resize: none !important;
+  box-shadow: none !important;
+}
+/* bolding the words to seem more appealing */
+.bold{
+  font-weight:bold;
+}
+
+/* Remove the background color and border of all navbar buttons. Make their
+   color dark blue, like Facebook. */
+.navbar button {
+  background-color: transparent;
+  border: none;
+  color: #2e467c;
+}
+
+/* Make buttons slightly darker when the user hovers over it, like Facebook
+  does. */
+.navbar button:hover {
+  background-color: transparent;
+  color: #22345c;
+  border: none;
+}
+
+/* Make the button white if clicked on, and remain white after clicking.
+   Facebook normally opens up a menu when you do this.
+   :active = user is currently interacting with the button.
+   :focus = user is currently interacting or has just interacted with the
+   button.
+   :active:focus = both at the same time
+   We have to override all of these combinations, since Bootstrap has separate
+   rules for them.*/
+.navbar button:active,
+.navbar button:focus,
+.navbar button:active:focus {
+  background-color: transparent;
+  color: white;
+  border: none;
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+/* Search button style -- overrides the above two rules for the search
+   button */
+.navbar form button,
+.navbar form button:hover,
+.navbar form button:focus,
+.navbar form button:active,
+.navbar form button:active:focus {
+  background-color: lightgrey;
+  color: black;
+  /* Make it a bit wider. */
+  width: 50px;
+  /* Make the border's curve more gentle */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* Apply a light-grey border color. You can specify colors as names, rgb
+     triplets, or hex numbers. */
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* Make the Bootstrap badges more Facebook-style in the navbar */
+.navbar .badge {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid black;
+  /* Offset the badge a bit so it hovers over the glyphicon. */
+  right: 8px;
+  top: -10px;
+}
+
+/* Make the "John" and "Home" buttons white. Would probably be cleaner
+   using a CSS class! */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button
+{
+  color: white;
+}
+
+/* Make the "John" and "Home" buttons have a dark blue background when
+   hovered over. */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button:hover,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button:hover
+{
+  background-color: #2e467c;
+}
