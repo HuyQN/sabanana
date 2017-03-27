@@ -7,7 +7,8 @@ import AddPost from './components/addpost.js'
 import EditPost from './components/editpost.js'
 import User from './components/User.js'
 import Nav from './components/NavBar.js'
-
+import Bio from './components/bio.js'
+import Viewedpost from './components/viewedpost.js'
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
 if (document.getElementById('user') !== null) {
@@ -26,10 +27,22 @@ if (document.getElementById('user') !== null) {
     document.getElementById('edit-post')
   );
 }
-else if (document.getElementById('displaypost') !== null) {
+if (document.getElementById('displaypost') !== null) {
   ReactDOM.render(
     <Displaypost />,
     document.getElementById('displaypost')
+  );
+}
+if (document.getElementById('bio') !== null) {
+  ReactDOM.render(
+    <Bio />,
+    document.getElementById('bio')
+  );
+}
+if (document.getElementById('viewedpost') !== null) {
+  ReactDOM.render(
+    <Viewedpost />,
+    document.getElementById('viewedpost')
   );
 }
 
