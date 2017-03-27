@@ -18,33 +18,42 @@ class Tagbar extends React.Component {
                </li>
              )
            })}
-        
+
         </ul>
       </div>
     );
   }
 }
 
-class Results extends React.Component {
+class Result extends React.Component {
+  render() {
+    return (
+      <div className="panel panel-default">
+        <div className="panel-body .search-text">
+          <p>{this.props.text}</p>
+          <p>Username: {this.props.username}</p>
+          <p>Location: {this.props.location}</p>
+          <p>Posted: {this.props.post_date}</p>
+        </div>
+      </div>
+    );
+  }
+}
+
+class SearchResults extends React.Component {
   render() {
     return (
       <div className="col-md-10">
         <div className="panel panel-default">
           <div className="panel-body .search-text">
-            <text>Search results for: "</text>
-            <text>Tennis</text>
-            <text>"</text>
+            <text>Search results for: "{this.props.search_term}"</text>
           </div>
         </div>
 
-        <div className="panel panel-default">
-          <div className="panel-body .search-text">
-            <p>Looking for a tennis buddy! Thursdays at 2:00 would be great.</p>
-            <p>Username: TennisLover</p>
-            <p>Location: Amherst</p>
-            <p>Posted: 2/27/17 12:00</p>
-          </div>
-        </div>
+        <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
+                username="TennisLover"
+                location="Amherst"
+                post_date="2/27/17 12:00" />
       </div>
     );
   }
@@ -63,7 +72,7 @@ class Main extends React.Component {
             <p tag="Clothes" />
             <p tag="Language" />
           </Tagbar>
-          <Results />
+          <SearchResults search_term="Tennis" />
         </div>
       </div>
     );
