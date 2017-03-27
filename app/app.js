@@ -67,7 +67,7 @@ if (document.getElementById('nav') !== null){
 
 if (document.getElementById('settings') !== null){
   ReactDOM.render(
-    <NavBar />,
+    <UserSettings />,
     document.getElementById('settings')
   );
 }
