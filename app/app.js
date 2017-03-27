@@ -1,23 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Each major browser view user interface must be imported.
-<<<<<<< HEAD
-import Displaypost from './components/displaypost.js'
-import AddPost from './components/addpost.js'
-import EditPost from './components/editpost.js'
-import User from './components/User.js'
-import Nav from './components/NavBar.js'
-import Bio from './components/bio.js'
-import Viewedpost from './components/viewedpost.js'
-=======
-import AddPost from './components/addpost.js'
-import EditPost from './components/editpost.js'
-import User from './components/User.js'
-import NavBar from './components/NavBar.js'
-import Search from './components/search.js'
 
->>>>>>> 838501dc05c36db329fd372da6a258af0d542195
+import Displaypost from './components/displaypost.js';
+import AddPost from './components/addpost.js';
+import EditPost from './components/editpost.js';
+import User from './components/User.js';
+import NavBar from './components/NavBar.js';
+import Bio from './components/bio.js';
+import Viewedpost from './components/viewedpost.js';
+import Search from './components/search.js';
+
+
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
 if (document.getElementById('user') !== null) {
@@ -25,11 +20,9 @@ if (document.getElementById('user') !== null) {
     <User />,
     document.getElementById('user')
   );
-<<<<<<< HEAD
-}  else if (document.getElementById('add-post') !== null) {
-=======
+
 } else if (document.getElementById('add-post') !== null) {
->>>>>>> 838501dc05c36db329fd372da6a258af0d542195
+
   ReactDOM.render(
     <AddPost />,
     document.getElementById('add-post')
