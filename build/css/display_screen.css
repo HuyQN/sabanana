@@ -89,19 +89,3 @@ body {
   right: 8px;
   top: -10px;
 }
-
-/* Make the "John" and "Home" buttons white. Would probably be cleaner
-   using a CSS class! */
-.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button,
-.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button
-{
-  color: white;
-}
-
-/* Make the "John" and "Home" buttons have a dark blue background when
-   hovered over. */
-.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button:hover,
-.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button:hover
-{
-  background-color: #2e467c;
-}
