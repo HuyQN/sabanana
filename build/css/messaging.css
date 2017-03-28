@@ -1,0 +1,283 @@
+.chat-popup {
+  width: 300px;
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  /* Applies the given border style to all sides. */
+  border: 1px solid #000;
+  /* Removes the border on the bottom. */
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+body {
+  padding-top: 60px;
+  /* I figured out the background color using Chrome's Inspect tool. */
+  background-color: #ECF8E0;
+}
+.fb-search {
+  width: 395px !important;
+}
+/* Style applies to a elements within ul elements with class nav within
+   an element with class fb-trending */
+.fb-trending ul.nav a {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.fb-trending-title {
+  line-height: 24px;
+}
+.fb-trending > .row:first-child {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  /* Padding is the whitespace between the content of fb-trending and its
+     border */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* Margin is the whitespace between the border and adjacent elements */
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.fb-trending .media {
+  margin-top: 5px;
+}
+.fb-trending {
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+}
+.green {
+  color: green;
+}
+.fb-status-update-entry textarea {
+  resize: none;
+  /* Needs to be !important, since Bootstrap sets this elsewhere. */
+  box-shadow: none !important;
+  border: none;
+}
+.fb-status-update-entry .media {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  /* Adds whitespace between bottom border and buttons */
+  margin-bottom: 10px;
+  /* Adds whitespace between top of media object and top border. */
+  padding-top: 5px;
+}
+.fb-status-update hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* The color of `hr` is set by its top border color.
+     Yeah, it's weird. */
+  border-top: 1px solid lightgray;
+}
+.fb-status-update .list-inline {
+  margin-bottom: 0px;
+}
+
+.fb-status-update .panel-body {
+  padding-bottom: 5px;
+}
+/* Fix background, text, and border of right sidebar. */
+.fb-right-sidebar {
+  /* Gray text. This is the same color Facebook uses. */
+  color: #9197a3;
+  border: 1px solid lightgrey;
+  background-color: white;
+  padding-bottom: 10px;
+}
+/* Make the birthday icon look more Facebookey.
+   It would be better practice to add a custom class to the birthday widget, but
+   I'm doing this to make the workshop a little faster. */
+.fb-right-sidebar .glyphicon-gift {
+  color: white;
+  background-color: red;
+  /* Sets padding at 2px on all sides at once */
+  padding: 2px;
+  /* Sets the border radius to 2px for each corner. */
+  border-radius: 2px;
+}
+/* Customize the look of non-active pills in trending widget */
+.fb-trending > .row:first-child li a {
+  /* Tells the element to inherit the color from its parent. Remember that
+     we set 'color' for the entire right sidebar to gray! */
+  color: inherit;
+}
+
+/* Customize the look of active pills in trending widget */
+.fb-trending > .row:first-child li.active a {
+  background-color: transparent;
+  /* Same color as the lightning bolt */
+  color: #5990ff;
+}
+/* Apply a light-blue color to flash icons *only* in the content
+   section of the trending widget. */
+.fb-trending > .row:nth-child(2) .glyphicon-flash {
+  color: #5990ff;
+}
+/* Makes links dark blue, even if they have been visited. (By default, the
+   browser will change the look of visited links.) */
+a,
+a:visited {
+  /* The color Facebook uses. */
+  color: #3b5998;
+  font-weight: bold;
+}
+/* Blue background */
+.navbar {
+  background-color: #F5DA81;
+}
+
+/* Make house logo white, even if the user hovers over it */
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover {
+  color: white;
+}
+
+/* Remove the background color and border of all navbar buttons. Make their
+   color dark blue, like Facebook. */
+.navbar button {
+  background-color: transparent;
+  border: none;
+  color: #2e467c;
+}
+
+/* Make buttons slightly darker when the user hovers over it, like Facebook
+  does. */
+.navbar button:hover {
+  background-color: transparent;
+  color: #22345c;
+  border: none;
+}
+
+/* Make the button white if clicked on, and remain white after clicking.
+   Facebook normally opens up a menu when you do this.
+   :active = user is currently interacting with the button.
+   :focus = user is currently interacting or has just interacted with the
+   button.
+   :active:focus = both at the same time
+   We have to override all of these combinations, since Bootstrap has separate
+   rules for them.*/
+.navbar button:active,
+.navbar button:focus,
+.navbar button:active:focus {
+  background-color: transparent;
+  color: white;
+  border: none;
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+/* Search button style -- overrides the above two rules for the search
+   button */
+.navbar form button,
+.navbar form button:hover,
+.navbar form button:focus,
+.navbar form button:active,
+.navbar form button:active:focus {
+  background-color: lightgrey;
+  color: black;
+  /* Make it a bit wider. */
+  width: 50px;
+  /* Make the border's curve more gentle */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* Apply a light-grey border color. You can specify colors as names, rgb
+     triplets, or hex numbers. */
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+  /* Removes halo and shadow on button when clicked. */
+  outline: none;
+  box-shadow: none;
+}
+
+/* Navbar button style when the button has notifications.
+   Apply same style when the user is hovering the mouse over the button. */
+button.fb-notifications,
+button.fb-notifications:hover {
+  color: white;
+}
+
+/* Make the Bootstrap badges more Facebook-style in the navbar */
+.navbar .badge {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid black;
+  /* Offset the badge a bit so it hovers over the glyphicon. */
+  right: 8px;
+  top: -10px;
+}
+
+/* Make the "John" and "Home" buttons white. Would probably be cleaner
+   using a CSS class! */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button
+{
+  color: white;
+}
+
+/* Make the "John" and "Home" buttons have a dark blue background when
+   hovered over. */
+.navbar .navbar-right > .btn-toolbar > .btn-group:first-child button:hover,
+.navbar .navbar-right > .btn-toolbar > .btn-group:nth-child(2) button:hover
+{
+  background-color: #2e467c;
+}
+/* Remove padding between list elements, align list items all of the way to the
+   left, and make text non-bolded & black. */
+.fb-left-sidebar .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 0px;
+  color: black;
+  font-weight: normal;
+}
+
+/* Make list items have a darker gray background when the mouse hovers
+   over them. */
+.fb-left-sidebar .nav > li > a:hover,
+.fb-left-sidebar .nav > li.active > a:hover {
+  /* This is the color Facebook uses */
+  background-color: #dcdee3;
+  color: black;
+}
+
+/* Override Bootstrap's default style, which changes the color/bgcolor of
+   list items when you click on them. */
+.fb-left-sidebar .nav > li > a:active,
+.fb-left-sidebar .nav > li > a:focus,
+.fb-left-sidebar .nav > li > a:active:focus,
+.fb-left-sidebar .nav > li.active > a:active,
+.fb-left-sidebar .nav > li.active > a:focus,
+.fb-left-sidebar .nav > li.active > a:active:focus {
+  background-color: transparent;
+  color: black;
+}
+
+/* Make the badges have no background, a dark gray color, and normal font
+   weight (removes bold). */
+.fb-left-sidebar .badge {
+  background-color: transparent;
+  /* The same color as Facebook */
+  color: #4e5665;
+  font-weight: normal;
+}
+
+/* Color all text items in the left sidebar this color gray. */
+.fb-left-sidebar {
+  /* I got this color from Facebook */
+  color: #9197a3;
+}
+
+
+/* The active pill should be bolded w/ no background. */
+.fb-left-sidebar .nav > li.active > a {
+  font-weight: bold;
+  background-color: transparent;
+}
