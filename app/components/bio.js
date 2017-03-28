@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class bio extends React.Component {
+export default class Bio extends React.Component {
   render() {
     return (
       <div>
