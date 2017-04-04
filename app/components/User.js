@@ -1,32 +1,7 @@
 import React from 'react'
 
 import NavBar from './NavBar'
-
-function Tag ({name}) {
-  return <a href='#'><em className='text-info'>{name}</em></a>
-}
-
-function Tags ({tags}) {
-  return (
-    <span className='tags'>
-      {tags.map(Tag)}
-    </span>
-  )
-}
-
-function Post ({date, name, tags}) {
-  return (
-    <li><a><span className='text-muted'>{date}</span> {name}</a> <Tags tags={tags} /> </li>
-  )
-}
-
-function Posts ({posts}) {
-  return (
-    <ul className='list-unstyled posts'>
-      {posts.map(Post)}
-    </ul>
-  )
-}
+import Posts from './Posts'
 
 function Profile ({profile: {bio, avatar}, name, posts}) {
   return (
@@ -42,8 +17,7 @@ function Profile ({profile: {bio, avatar}, name, posts}) {
           </div>
         </div>
         <div className='col-xs-8'>
-          <h2>Posts</h2>
-          <Posts posts={posts} />
+          <Posts posts={posts} includeHeader />
         </div>
       </div>
     </div>

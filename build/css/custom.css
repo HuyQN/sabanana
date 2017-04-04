@@ -20,6 +20,10 @@ body {
 	padding-left: 10px;
 }
 
+.tags a {
+  padding-right: 3px;
+}
+
 .thumbnail {
 	background-color: inherit;
 	border: none;
