@@ -78,4 +78,3 @@ if (document.getElementById('Messages') !== null){
     document.getElementById('Messages')
   );
 }
-}
