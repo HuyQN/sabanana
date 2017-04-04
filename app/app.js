@@ -78,10 +78,4 @@ if (document.getElementById('Messages') !== null){
     document.getElementById('Messages')
   );
 }
-
-if (document.getElementById('MessageFeed') !== null){
-  ReactDOM.render(
-    <MessageFeed />,
-    document.getElementById('MessageFeed')
-  );
 }
