@@ -13,7 +13,7 @@ import Viewedpost from './components/viewedpost.js';
 import Search from './components/search.js';
 import UserSettings from './components/settings.js'
 import Messages from './components/messages.js'
-
+import MessageFeed from './components/messagefeed.js'
 
 // For each view conditionally determine which view to display
 // depending on if the ID is present in the HTML.
@@ -76,5 +76,12 @@ if (document.getElementById('Messages') !== null){
   ReactDOM.render(
     <Messages />,
     document.getElementById('Messages')
+  );
+}
+
+if (document.getElementById('MessageFeed') !== null){
+  ReactDOM.render(
+    <MessageFeed />,
+    document.getElementById('MessageFeed')
   );
 }
