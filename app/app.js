@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 // Each major browser view user interface must be imported.
 
@@ -15,66 +20,25 @@ import UserSettings from './components/settings.js'
 import Messages from './components/messages.js'
 import MessageFeed from './components/messagefeed.js'
 
-// For each view conditionally determine which view to display
-// depending on if the ID is present in the HTML.
-if (document.getElementById('user') !== null) {
-  ReactDOM.render(
-    <User />,
-    document.getElementById('user')
-  );
+function App() {
+  return (
+    <Router>
+      <div>
+        <NavBar />
 
-} else if (document.getElementById('add-post') !== null) {
-
-  ReactDOM.render(
-    <AddPost />,
-    document.getElementById('add-post')
-  );
-} else if (document.getElementById('edit-post') !== null){
-  ReactDOM.render(
-    <EditPost />,
-    document.getElementById('edit-post')
-  );
-} else if (document.getElementById('search') !== null){
-  ReactDOM.render(
-    <Search />,
-    document.getElementById('search')
-  );
-}
-if (document.getElementById('displaypost') !== null) {
-  ReactDOM.render(
-    <Displaypost />,
-    document.getElementById('displaypost')
-  );
-}
-if (document.getElementById('bio') !== null) {
-  ReactDOM.render(
-    <Bio />,
-    document.getElementById('bio')
-  );
-}
-if (document.getElementById('viewedpost') !== null) {
-  ReactDOM.render(
-    <Viewedpost />,
-    document.getElementById('viewedpost')
-  );
+        <Route exact path="/" component={Search}/>
+        <Route path="/user/" component={User}/>
+        <Route path="/messages/" component={Messages}/>
+        <Route path="/add/" component={AddPost}/>
+        <Route path="/settings/" component={UserSettings}/>
+        <Route path="/edit/:postId" component={AddPost}/>
+        <Route path="/search/:query" component={Search}/>
+      </div>
+    </Router>
+  )
 }
 
-if (document.getElementById('nav') !== null){
-  ReactDOM.render(
-    <NavBar />,
-    document.getElementById('nav')
-  );
-}
-
-if (document.getElementById('settings') !== null){
-  ReactDOM.render(
-    <UserSettings />,
-    document.getElementById('settings')
-  );
-}
-if (document.getElementById('Messages') !== null){
-  ReactDOM.render(
-    <Messages />,
-    document.getElementById('Messages')
-  );
-}
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);

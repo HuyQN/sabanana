@@ -1,6 +1,22 @@
 import React from 'react'
+import {
+  Link
+} from 'react-router-dom'
 
 export default class NavBar extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      search: ""
+    }
+  }
+
+  setSearch(e) {
+    e.preventDefault()
+
+    this.setState({search: e.target.value})
+  }
   render() {
     var logo = {width: 75, height: 30}
     var navSearch = {width: 485}
@@ -16,18 +32,20 @@ export default class NavBar extends React.Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <a className='navbar-brand' href='home_screen.html'>
+            <Link to="/" className='navbar-brand' href='home_screen.html'>
               <img src='img/SabananaLogo.png' style={logo}/>
-            </a>
+            </Link>
           </div>
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <form className='navbar-form navbar-left' role='search'>
               <div className='input-group'>
-                <input type='text' className='form-control' style = {navSearch} placeholder='Search...' />
+                <input type='text' onChange={this.setSearch.bind(this)} value={this.state.search}  className='form-control' style={navSearch} placeholder='Search...' />
                 <span className='input-group-btn'>
-                  <button type='submit' className='btn btn-default'>
-                    <span className='glyphicon glyphicon-search' />
-                  </button>
+                  <Link to={"/search/" + this.state.search}>
+                    <button type='submit' className='btn btn-default'>
+                      <span className='glyphicon glyphicon-search' />
+                    </button>
+                  </Link>
                 </span>
               </div>
             </form>
@@ -40,10 +58,10 @@ export default class NavBar extends React.Component {
                       <span className='glyphicon glyphicon-cog' aria-hidden='true' />
                     </button>
                     <ul className='dropdown-menu'>
-                      <li><a href='user.html'>Profile</a></li>
-                      <li><a href='UserSettings.html'>User Settings</a></li>
-                      <li><a href='messaging.html'>Messages</a></li>
-                      <li><a href='addpost.html'>Create Post</a></li>
+                      <li><Link to='/user/'>Profile</Link></li>
+                      <li><Link to='/settings/'>User Settings</Link></li>
+                      <li><Link to='/messages/'>Messages</Link></li>
+                      <li><Link to='/add/'>Create Post</Link></li>
                       <li><a href='#'>Log out</a></li>
                     </ul>
                   </div>
