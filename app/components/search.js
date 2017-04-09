@@ -1,5 +1,23 @@
 import React from 'react';
+import Posts from './Posts.js'
 
+var posts = [{
+  date: 'February 1, 2017',
+  name: 'Catan fun!',
+  tags: [{
+    name: 'board-games'
+  }, {
+    name: 'fun!'
+  }]
+}, {
+  date: 'February 23, 2017',
+  name: 'yeah lots of sports i love sports',
+  tags: [{
+    name: 'good-old-times'
+  }, {
+    name: 'getting-down-to-it'
+  }]
+}]
 
 class Tagbar extends React.Component {
   render() {
@@ -68,22 +86,7 @@ export default class Search extends React.Component {
             <p tag="Language" />
           </Tagbar>
           <SearchResults search_term={this.props.match.params.query}>
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
+            <Posts posts={posts} />
           </SearchResults>
         </div>
       </div>
