@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from './NavBar';
 import Bio from './bio';
 import Viewedpost from './viewedpost';
 
@@ -7,7 +6,7 @@ export default class Displaypost extends React.Component {
   render() {
     return (
 <div>
-<NavBar />
+
 <div className="container">
 
     <div className="row">

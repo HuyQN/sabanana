@@ -1,6 +1,5 @@
 import React from 'react'
 
-import NavBar from './NavBar'
 import Posts from './Posts'
 
 function Profile ({profile: {bio, avatar}, name, posts}) {
@@ -52,7 +51,6 @@ const MOCK_DATA = {
 export default function User (props) {
   return (
     <div>
-      <NavBar />
       <Profile {...MOCK_DATA} />
     </div>
   )
