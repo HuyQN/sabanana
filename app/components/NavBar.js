@@ -16,7 +16,7 @@ export default class NavBar extends React.Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <a className='navbar-brand' href='#'>
+            <a className='navbar-brand' href='home_screen.html'>
               <img src='img/SabananaLogo.png' style={logo}/>
             </a>
           </div>
@@ -40,10 +40,10 @@ export default class NavBar extends React.Component {
                       <span className='glyphicon glyphicon-cog' aria-hidden='true' />
                     </button>
                     <ul className='dropdown-menu'>
-                      <li><a href='#'>Profile</a></li>
-                      <li><a href='#'>User Settings</a></li>
-                      <li><a href='#'>Messages</a></li>
-                      <li><a href='#'>Create Post</a></li>
+                      <li><a href='user.html'>Profile</a></li>
+                      <li><a href='UserSettings.html'>User Settings</a></li>
+                      <li><a href='messaging.html'>Messages</a></li>
+                      <li><a href='addpost.html'>Create Post</a></li>
                       <li><a href='#'>Log out</a></li>
                     </ul>
                   </div>
