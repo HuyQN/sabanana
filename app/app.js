@@ -19,6 +19,7 @@ import Search from './components/search.js';
 import UserSettings from './components/settings.js'
 import Messages from './components/messages.js'
 import MessageFeed from './components/messagefeed.js'
+import HomeScreen from './components/homescreen.js'
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       <div>
         <NavBar />
 
-        <Route exact path="/" component={Search}/>
+        <Route exact path="/" component={HomeScreen}/>
         <Route path="/user/" component={User}/>
         <Route path="/messages/" component={Messages}/>
         <Route path="/add/" component={AddPost}/>
