@@ -17,6 +17,11 @@ export default class NavBar extends React.Component {
 
     this.setState({search: e.target.value})
   }
+
+clearSearch(){
+  this.setState({search:""})
+}
+
   render() {
     var logo = {width: 75, height: 30}
     var navSearch = {width: 485}
@@ -41,7 +46,7 @@ export default class NavBar extends React.Component {
               <div className='input-group'>
                 <input type='text' onChange={this.setSearch.bind(this)} value={this.state.search}  className='form-control' style={navSearch} placeholder='Search...' />
                 <span className='input-group-btn'>
-                  <Link to={"/search/" + this.state.search}>
+                  <Link onClick={this.clearSearch.bind(this)} to={"/search/" + this.state.search}>
                     <button type='submit' className='btn btn-default'>
                       <span className='glyphicon glyphicon-search' />
                     </button>
