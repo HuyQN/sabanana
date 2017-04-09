@@ -3,6 +3,7 @@ import React from 'react'
 export default class NavBar extends React.Component {
   render() {
     var logo = {width: 75, height: 30}
+    var navSearch = {width: 485}
     return (
     <div>
       <nav className='navbar navbar-fixed-top navbar-default'>
@@ -22,7 +23,7 @@ export default class NavBar extends React.Component {
           <div className='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <form className='navbar-form navbar-left' role='search'>
               <div className='input-group'>
-                <input type='text' className='form-control fb-search' placeholder='Search...' />
+                <input type='text' className='form-control' style = {navSearch} placeholder='Search...' />
                 <span className='input-group-btn'>
                   <button type='submit' className='btn btn-default'>
                     <span className='glyphicon glyphicon-search' />
