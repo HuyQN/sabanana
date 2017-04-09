@@ -1,6 +1,5 @@
 import React from 'react';
 
-import NavBar from './NavBar.js'
 
 class Tagbar extends React.Component {
   render() {
@@ -55,7 +54,7 @@ class SearchResults extends React.Component {
   }
 }
 
-class Main extends React.Component {
+export default class Search extends React.Component {
   render() {
     return (
       <div className="container-fluid">
@@ -68,7 +67,7 @@ class Main extends React.Component {
             <p tag="Clothes" />
             <p tag="Language" />
           </Tagbar>
-          <SearchResults search_term="Tennis">
+          <SearchResults search_term={this.props.match.params.query}>
             <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
                     username="TennisLover"
                     location="Amherst"
@@ -87,17 +86,6 @@ class Main extends React.Component {
                     post_date="2/27/17 12:00" />
           </SearchResults>
         </div>
-      </div>
-    );
-  }
-}
-
-export default class Search extends React.Component {
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <Main />
       </div>
     );
   }
