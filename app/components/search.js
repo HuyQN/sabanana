@@ -25,33 +25,15 @@ class Tagbar extends React.Component {
       <div className="col-md-2 panel panel-default tags">
         <ul className="nav">
           <li role="presentation">TAGS</li>
-
-          {React.Children.map(this.props.children, function(child) {
-             return (
+          {this.props.tags.map((tag) => {
+             return(
                <li role="presentation">
                  <a href="#">
-                   {child.props.tag}
+                   {tag}
                  </a>
                </li>
-             )
-           })}
-
+             )})}
         </ul>
-      </div>
-    );
-  }
-}
-
-class Result extends React.Component {
-  render() {
-    return (
-      <div className="panel panel-default">
-        <div className="panel-body .search-text">
-          <p>{this.props.text}</p>
-          <p>Username: {this.props.username}</p>
-          <p>Location: {this.props.location}</p>
-          <p>Posted: {this.props.post_date}</p>
-        </div>
       </div>
     );
   }
@@ -73,18 +55,18 @@ class SearchResults extends React.Component {
 }
 
 export default class Search extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tags: ["Board Games", "Sports", "Music", "Computers", "Clothing", "Language"]
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid">
         <div className="clearfix">
-          <Tagbar>
-            <p tag="Board Games" />
-            <p tag="Sports" />
-            <p tag="Music" />
-            <p tag="Computers" />
-            <p tag="Clothes" />
-            <p tag="Language" />
-          </Tagbar>
+          <Tagbar tags={this.state.tags} />
           <SearchResults search_term={this.props.match.params.query}>
             <Posts posts={posts} />
           </SearchResults>
