@@ -1,1 +1,1 @@
-export const currentUserID = 0
+export const currentUserID = 1

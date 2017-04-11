@@ -17,7 +17,7 @@ export const thread = {
     PropTypes.number.isRequired
   ).isRequired,
   users: PropTypes.arrayOf(
-    PropTypes.shape(message).isRequired
+    PropTypes.shape(user).isRequired
   ).isRequired,
   messages: PropTypes.arrayOf(
     PropTypes.shape(message).isRequired

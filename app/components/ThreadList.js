@@ -31,10 +31,10 @@ ThreadButton.propTypes = {
 export default function ThreadList ({threads, selectedThread, onSelectThread}) {
   return (
     <div>
-      {threads.map(({thread}) => (
+      {threads.map((thread) => (
         <ThreadButton
           thread={thread}
-          selected={thread._id === selectedThread._id}
+          selected={selectedThread && thread._id === selectedThread._id}
           onSelectThread={onSelectThread}
           />
         ))}
