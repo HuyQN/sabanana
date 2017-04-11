@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class MessageFeed extends React.Component {
+export default class Thread extends React.Component {
   render () {
     return (
       <div>

@@ -1,30 +1,44 @@
 import React from 'react'
-import MessageFeed from './messagefeed'
-import Messageslist from './messageslist'
 
-import {getMessages} from '../server_messaging'
+import Thread from './Thread'
+import ThreadList from './ThreadList'
+import {getThreads} from '../server'
+import {currentUserID} from '../const'
 
 export default class Messages extends React.Component {
   constructor (props) {
     super(props)
-
     this.state = {
-      thread: null
+      threads: null,
+      selectedThread: null
     }
+    this.refreshThreads()
   }
 
-  setThread (thread) {
-    this.setState({thread: thread})
+  refreshThreads () {
+    getThreads(currentUserID).then(
+      threads => this.setState({threads})
+    )
   }
 
   render () {
+    if (this.state.threads === null) {
+      return <div>loading threads</div>
+    }
     return (
       <div>
         <div className='col-md-2 fb-right-sidebar'>
-          <Messageslist setThread={this.setThread.bind(this)} />
+          <ThreadList
+            threads={this.state.threads}
+            selectedThread={this.state.selectedThread}
+            onSelectThread={thread => this.setState({selectedThread: thread})}
+          />
         </div>
         <div className='col-md-10'>
-          <MessageFeed threadID={this.state.thread} />
+          <Thread
+            thread={this.state.selectedThread}
+            onMessageSend={this.refreshThreads.bind(this)}
+          />
         </div>
 
       </div>

@@ -31,7 +31,7 @@ var initialData = {
   'post': {
     '1': {
       '_id': 1,
-      'author': 2,
+      'authorID': 2,
       'title': 'Looking Band',
       'description': 'I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer',
       'tags': 'Music',
@@ -39,7 +39,7 @@ var initialData = {
     },
     '2': {
       '_id': 2,
-      'author': 3,
+      'authorID': 3,
       'title': 'Board Games',
       'description': 'Looking for a group of people to play Munchkins with',
       'tags': 'Board Games',
@@ -47,7 +47,7 @@ var initialData = {
     },
     '3': {
       '_id': 3,
-      'author': 3,
+      'authorID': 3,
       'title': 'Selling Monopoly',
       'description': 'Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.',
       'tags': 'Selling',
@@ -55,7 +55,7 @@ var initialData = {
     },
     '4': {
       '_id': 4,
-      'author': 1,
+      'authorID': 1,
       'title': 'Football',
       'description': 'YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.',
       'tags': 'Sports',
@@ -63,7 +63,7 @@ var initialData = {
     },
     '5': {
       '_id': 5,
-      'author': 4,
+      'authorID': 4,
       'title': 'Trying to buy eextbook for econ102',
       'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
       'tags': 'Buying',
@@ -73,43 +73,43 @@ var initialData = {
   thread: {
     1: {
       _id: 1,
-      user_ids: [1, 2],
+      userIDs: [1, 2],
       messages: [{
-        author: 0,
+        authorID: 0,
         content: 'hey'
       }, {
-        author: 1,
+        authorID: 1,
         content: 'whats up'
       }, {
-        author: 0,
+        authorID: 0,
         content: 'Still wanna hit that tennis ball later?'
       }]
     },
     2: {
       _id: 2,
-      user_ids: [1, 3],
+      userIDs: [1, 3],
       messages: [{
-        author: 0,
+        authorID: 0,
         content: 'hey'
       }, {
-        author: 1,
+        authorID: 1,
         content: 'whats up'
       }, {
-        author: 0,
+        authorID: 0,
         content: 'Still wanna hit that soccer ball later?'
       }]
     },
     3: {
       _id: 3,
-      user_ids: [2, 3],
+      userIDs: [2, 3],
       messages: [{
-        author: 0,
+        authorID: 0,
         content: 'hey'
       }, {
-        author: 1,
+        authorID: 1,
         content: 'whats up'
       }, {
-        author: 0,
+        authorID: 0,
         content: 'one is lame'
       }]
     }
@@ -138,6 +138,10 @@ export function readDocument (collection, id) {
   // Clone the data. We do this to model a database, where you receive a
   // *copy* of an object and not the object itself.
   return JSONClone(data[collection][id])
+}
+
+export function readCollection (collection) {
+  return JSONClone(data[collection])
 }
 
 /**

@@ -18,7 +18,6 @@ import Viewedpost from './components/viewedpost.js'
 import Search from './components/search.js'
 import UserSettings from './components/settings.js'
 import Messages from './components/messages.js'
-import MessageFeed from './components/messagefeed.js'
 import HomeScreen from './components/homescreen.js'
 
 function App () {
