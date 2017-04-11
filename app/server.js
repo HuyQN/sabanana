@@ -9,3 +9,11 @@ function emulateServerReturn (data, cb) {
     cb(data)
   }, 4)
 }
+
+export function getAllPosts(cb) {
+  var data = [];
+  for (var i = 1; i < 6; i++){
+    data.push(readDocument("posts", i));
+  }
+  emulateServerReturn(data, cb);
+}

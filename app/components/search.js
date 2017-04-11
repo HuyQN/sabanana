@@ -1,5 +1,6 @@
 import React from 'react';
-import Posts from './Posts.js'
+import Posts from './Posts.js';
+import {getAllPosts} from '../server';
 
 var posts = [{
   date: 'February 1, 2017',
@@ -56,7 +57,7 @@ class Tagbar extends React.Component {
           {this.state.selected_tags.map((tag) => {
              return(
                <li role="presentation">
-                 <label type="button" className="btn btn-default active" type="button" onClick={() => this.handleDeselect(tag)}>
+                 <label type="button" className="btn btn-default active" onClick={() => this.handleDeselect(tag)}>
                    {tag}
                  </label>
                </li>
@@ -64,9 +65,10 @@ class Tagbar extends React.Component {
           {disjoint.map((tag) => {
              return(
                <li role="presentation">
-                 <label type="button" className="btn btn-default" type="button" onClick={() => this.handleSelect(tag)}>
+                 <label type="button" className="btn btn-default" onClick={() => this.handleSelect(tag)}>
                    {tag}
                  </label>
+                 <div id="db-reset"></div>
                </li>
              )})}
         </ul>
@@ -92,13 +94,15 @@ class SearchResults extends React.Component {
 
 export default class Search extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       /* Tags will need to be the result of a call to the server*/
       tags: ["Board Games", "Sports", "Music", "Computers", "Clothing", "Language"],
       /* Always start with no selected tags*/
-      selected_tags: ["Test"]
+      selected_tags: ["Test"],
+      data: []
     }
+    getAllPosts((data) => {this.setState({data: data});});
   }
 
   render() {
