@@ -1,49 +1,48 @@
-import React from 'react';
+import React from 'react'
 
 export default class Messageslist extends React.Component {
-  render() {
+  render () {
     return (
       <div>
-        
-          <div classname="row">
-            <div classname="col-md-12">
-              <div classname="media-left media-top">
+
+        <div className='row'>
+          <div className='col-md-12'>
+            <div className='media-left media-top'>
                   PIC
               </div>
-            <div classname="media-body">
-              <a href="#">Someone</a>
+            <div className='media-body'>
+              <a href='#'>Someone</a>
             </div>
           </div>
 
-        <div classname="row">
-          <div classname="col-md-12">
-            <div classname="media-left media-top">
+          <div className='row'>
+            <div className='col-md-12'>
+              <div className='media-left media-top'>
               PIC
             </div>
-            <div classname="media-body">
-              <a href="#">Someone else</a>
+              <div className='media-body'>
+                <a href='#'>Someone else</a>
+              </div>
             </div>
           </div>
-        </div>
 
-          
-        <div classname="row">
-          <div classname="col-md-12">
-            <div classname="row">
-              <div classname="col-md-12">
-                <div classname="media-left media-top">
+          <div className='row'>
+            <div className='col-md-12'>
+              <div className='row'>
+                <div className='col-md-12'>
+                  <div className='media-left media-top'>
                     PIC
                 </div>
-                
-                <div classname="media-body">
-                  <a href="#">Someone #3</a>
+
+                  <div className='media-body'>
+                    <a href='#'>Someone #3</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-</div>
     )
   }
 }

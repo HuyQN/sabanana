@@ -1,66 +1,66 @@
-import React from 'react';
+import React from 'react'
 
 export default class MessageFeed extends React.Component {
-  render() {
+  render () {
     return (
       <div>
-        
-          <div classname="panel-footer">
-        
-           <ul classname="media-list">
-            <li classname="media">
-              <div classname="media-left media-top">
+
+        <div className='panel-footer'>
+
+          <ul className='media-list'>
+            <li className='media'>
+              <div className='media-left media-top'>
                 PIC
               </div>
-              <div classname="media-body">
-                <a href="#">Someone Else</a>: Are you still looking for a tennis partner?
+              <div className='media-body'>
+                <a href='#'>Someone Else</a>: Are you still looking for a tennis partner?
               </div>
             </li>
 
-            <li classname="media">
-              <div classname="media-left media-top">
+            <li className='media'>
+              <div className='media-left media-top'>
                 PIC
               </div>
-              <div classname="media-body">
-                <a href="#">You</a>: yes i am
+              <div className='media-body'>
+                <a href='#'>You</a>: yes i am
               </div>
             </li>
-            
-            <li classname="media">
-              <div classname="media-left media-top">
+
+            <li className='media'>
+              <div className='media-left media-top'>
                 PIC
             </div>
-            <div classname="media-body">
-              <a href="#">Someone Else</a>: how about tuesday?
+              <div className='media-body'>
+                <a href='#'>Someone Else</a>: how about tuesday?
             </div>
             </li>
-            
-            <li classname="media">
-              <div classname="media-left media-top">
+
+            <li className='media'>
+              <div className='media-left media-top'>
                 PIC
               </div>
-              <div classname="media-body">
-                <a href="#">You</a>: sounds good
+              <div className='media-body'>
+                <a href='#'>You</a>: sounds good
               </div>
             </li>
-            
-            <li classname="media">
-              <div classname="media-left media-top">
+
+            <li className='media'>
+              <div className='media-left media-top'>
                 PIC
               </div>
-              <div classname="media-body">
-                <div classname="input-group">
-                  <input type="text" classname="form-control"
-                         placeholder="Write a message..."/>
-                  <span classname="input-group-btn">
-                    <button classname="btn btn-default" type="button">
-                      <span classname="glyphicon glyphicon-ok"></span>
+              <div className='media-body'>
+                <div className='input-group'>
+                  <input type='text' className='form-control'
+                    placeholder='Write a message...' />
+                  <span className='input-group-btn'>
+                    <button className='btn btn-default' type='button'>
+                      <span className='glyphicon glyphicon-ok' />
                     </button>
                   </span>
                 </div>
               </div>
             </li>
-          
+
           </ul>
         </div>
       </div>
