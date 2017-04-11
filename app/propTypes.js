@@ -1,25 +1,26 @@
 import {PropTypes} from 'react'
 
-export const user = {
+export const user = PropTypes.shape({
   _id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   bio: PropTypes.string
-}
+})
 
-export const message = {
+export const message = PropTypes.shape({
   authorID: PropTypes.number.isRequired,
+  author: user.isRequired,
   content: PropTypes.string.isRequired
-}
+})
 
-export const thread = {
+export const thread = PropTypes.shape({
   _id: PropTypes.number.isRequired,
   userIDs: PropTypes.arrayOf(
     PropTypes.number.isRequired
   ).isRequired,
   users: PropTypes.arrayOf(
-    PropTypes.shape(user).isRequired
+    user.isRequired
   ).isRequired,
   messages: PropTypes.arrayOf(
-    PropTypes.shape(message).isRequired
+    message.isRequired
   ).isRequired
-}
+})

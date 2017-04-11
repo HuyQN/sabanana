@@ -26,7 +26,7 @@ function ThreadButton ({thread, selected, onSelect}) {
 }
 
 ThreadButton.propTypes = {
-  thread: React.PropTypes.shape(thread).isRequired,
+  thread: thread.isRequired,
   selected: React.PropTypes.bool.isRequired,
   onSelect: React.PropTypes.func.isRequired
 }
@@ -48,8 +48,8 @@ export default function ThreadList ({threads, selectedThread, onSelectThread}) {
 
 ThreadList.propTypes = {
   threads: React.PropTypes.arrayOf(
-    React.PropTypes.shape(thread).isRequired
+    thread.isRequired
   ).isRequired,
-  selectedThread: React.PropTypes.shape(thread),
+  selectedThread: thread,
   onSelectThread: React.PropTypes.func.isRequired
 }
