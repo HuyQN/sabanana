@@ -11,17 +11,17 @@ var initialData = {
       "_id": 1, 
       "name": "Bob",
       "bio": "Train club best club"
-    }
+    },
     "2":{
       "_id": 2,
       "name": "Jill",
       "bio": "Insert very long text here"
-    }
+    },
     "3":{
       "_id": 3,
       "name": "Jack",
       "bio": "Jill is very mean"
-    }
+    },
     "4":{
       "_id": 4,
       "name": "La-a",
@@ -33,7 +33,7 @@ var initialData = {
       "_id": 1,
       "author": 2,
       "title": "Looking Band",
-      "description": "I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer"
+      "description": "I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer",
       "tags": "Music",
       "postDate": 1452690900000
     },
@@ -41,7 +41,7 @@ var initialData = {
       "_id": 2,
       "author": 3,
       "title": "Board Games",
-      "description": "Looking for a group of people to play Munchkins with"
+      "description": "Looking for a group of people to play Munchkins with",
       "tags": "Board Games",
       "postDate": 1453690900000
     },
@@ -93,8 +93,7 @@ var initialData = {
       "messageDate": 1254201230000
     }
   }
-}
-
+};
 
 var data = JSON.parse(localStorage.getItem(startupName))
 if (data === null) {
@@ -168,7 +167,7 @@ class ResetDatabase extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <ResetDatabase />,
-  document.getElementById('db-reset')
-)
+/* ReactDOM.render(
+ *   <ResetDatabase />,
+ *   document.getElementById('db-reset')
+ * )*/
