@@ -22,8 +22,8 @@ function PostHeader () {
   return (
     <div className='panel-heading'>
       <h2 className='panel-title'>
-				Posts
-			</h2>
+      Posts
+      </h2>
     </div>
   )
 }

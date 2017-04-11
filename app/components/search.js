@@ -74,22 +74,22 @@ class Tagbar extends React.Component {
         <li><label type="button" className="btn btn-default" onClick={() => {resetDatabase(); window.alert("Reset DB"); document.location.reload(false);}}>Reset DB</label></li>
         </ul>
       </div>
-    );
+    )
   }
 }
 
 class SearchResults extends React.Component {
-  render() {
+  render () {
     return (
-      <div className="col-md-10">
-        <div className="panel panel-default">
-          <div className="panel-body .search-text">
+      <div className='col-md-10'>
+        <div className='panel panel-default'>
+          <div className='panel-body .search-text'>
             <text>Search results for: "{this.props.search_term}"</text>
           </div>
         </div>
         {this.props.children}
       </div>
-    );
+    )
   }
 }
 
@@ -116,6 +116,6 @@ export default class Search extends React.Component {
           </SearchResults>
         </div>
       </div>
-    );
+    )
   }
 }
