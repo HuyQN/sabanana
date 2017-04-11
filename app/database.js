@@ -6,7 +6,7 @@ var startupName = 'sabanana'
 
 // Put your mock objects here, as in Workshop 4
 var initialData = {
-  'users': {
+  'user': {
     '1': {
       '_id': 1,
       'name': 'Bob',
@@ -28,7 +28,7 @@ var initialData = {
       'bio': "It's pronounces Ladasha"
     }
   },
-  'posts': {
+  'post': {
     '1': {
       '_id': 1,
       'author': 2,
@@ -70,27 +70,48 @@ var initialData = {
       'postDate': 1454304010000
     }
   },
-  'message': {
-    '1': {
-      '_id': 1,
-      'sender': 1,
-      'receiver': 4,
-      'messageContent': 'YO got a book I can sell you you',
-      'messageDate': 1253901230000
+  thread: {
+    1: {
+      _id: 1,
+      user_ids: [1, 2],
+      messages: [{
+        author: 0,
+        content: 'hey'
+      }, {
+        author: 1,
+        content: 'whats up'
+      }, {
+        author: 0,
+        content: 'Still wanna hit that tennis ball later?'
+      }]
     },
-    '2': {
-      '_id': 2,
-      'sender': 4,
-      'receiver': 1,
-      'messageContent': "Ok let's meet up at ______",
-      'messageDate': 1254101230000
+    2: {
+      _id: 2,
+      user_ids: [1, 3],
+      messages: [{
+        author: 0,
+        content: 'hey'
+      }, {
+        author: 1,
+        content: 'whats up'
+      }, {
+        author: 0,
+        content: 'Still wanna hit that soccer ball later?'
+      }]
     },
-    '3': {
-      '_id': 3,
-      'sender': 1,
-      'receiver': 4,
-      'messageContent': 'Aight sounds good',
-      'messageDate': 1254201230000
+    3: {
+      _id: 3,
+      user_ids: [2, 3],
+      messages: [{
+        author: 0,
+        content: 'hey'
+      }, {
+        author: 1,
+        content: 'whats up'
+      }, {
+        author: 0,
+        content: 'one is lame'
+      }]
     }
   }
 }
