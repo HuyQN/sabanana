@@ -1,6 +1,7 @@
 import React from 'react';
 import Posts from './Posts.js';
 import {getAllPosts} from '../server';
+import {resetDatabase} from '../database';
 
 var posts = [{
   date: 'February 1, 2017',
@@ -68,9 +69,9 @@ class Tagbar extends React.Component {
                  <label type="button" className="btn btn-default" onClick={() => this.handleSelect(tag)}>
                    {tag}
                  </label>
-                 <div id="db-reset"></div>
                </li>
              )})}
+        <li><label type="button" className="btn btn-default" onClick={() => {resetDatabase(); window.alert("Reset DB"); document.location.reload(false);}}>Reset DB</label></li>
         </ul>
       </div>
     );
