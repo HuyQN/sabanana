@@ -16,11 +16,6 @@ export default class UserSettings extends React.Component {
             <br />
             <br />
           <a href="#"><span className="glyphicon glyphicon-pencil">
-          </span><font size="+1"><strong> Change Password</strong></font></a>
-            <br />
-            <br />
-            <br />
-          <a href="#"><span className="glyphicon glyphicon-pencil">
           </span><font size="+1"><strong> Edit Avatar</strong></font></a>
             <br />
             <br />
@@ -32,6 +27,7 @@ export default class UserSettings extends React.Component {
             <br />
           <a href="#"><span className="glyphicon glyphicon-pencil">
           </span><font size="+1"><strong> Add / Edit / Delete Posts</strong></font></a>
+        <br />
       </div>
       </div>
       </div>

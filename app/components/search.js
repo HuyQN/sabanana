@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Tagbar extends React.Component {
   render() {
     return (
@@ -54,7 +53,7 @@ class SearchResults extends React.Component {
   }
 }
 
-export default class Search extends React.Component {
+class Main extends React.Component {
   render() {
     return (
       <div className="container-fluid">
@@ -67,7 +66,7 @@ export default class Search extends React.Component {
             <p tag="Clothes" />
             <p tag="Language" />
           </Tagbar>
-          <SearchResults search_term={this.props.match.params.query}>
+          <SearchResults search_term="Tennis">
             <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
                     username="TennisLover"
                     location="Amherst"
@@ -86,6 +85,16 @@ export default class Search extends React.Component {
                     post_date="2/27/17 12:00" />
           </SearchResults>
         </div>
+      </div>
+    );
+  }
+}
+
+export default class Search extends React.Component {
+  render() {
+    return (
+      <div>
+        <Main />
       </div>
     );
   }
