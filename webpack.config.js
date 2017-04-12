@@ -1,16 +1,16 @@
-var path = require('path');
+var path = require('path')
 
 module.exports = {
   // The main "entry point" of your web app. WebPack will pack every module that
   // this file depends on (and its dependencies depend on).
-  entry: './app/app.js',
+  entry: ['babel-polyfill', './app/app.js'],
   // Package up the application as 'app.js' in the 'build/js' directory.
   // __dirname is a magic variable that contains the directory that webpack.config.js
   // is located in.
   output: {
-    path: path.resolve(__dirname, "build", "js"),
-    publicPath: "/js/",
-    filename: "app.js"
+    path: path.resolve(__dirname, 'build', 'js'),
+    publicPath: '/js/',
+    filename: 'app.js'
   },
   // Source Maps map locations in build/js/app.js back to individual application
   // modules. Chrome Developer Tools uses this so you can see your original code
@@ -37,9 +37,9 @@ module.exports = {
           // es2015 == ECMAScript 2015. Lets you use new JavaScript features.
           // The React module runs the React compiler, which translates the
           // HTML in your React modules into code.
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react', 'es2017']
         }
       }
     ]
   }
-};
+}
