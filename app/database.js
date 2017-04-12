@@ -70,47 +70,47 @@ var initialData = {
       'date': 1454304010000
     }
   },
-  'thread': {
-    '1': {
-      '_id': 1,
-      'userIDs': [1, 2],
-      'messages': [{
-        'authorID': 0,
-        'content': 'hey'
+  thread: {
+    1: {
+      _id: 1,
+      userIDs: [1, 2],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
       }, {
-        'authorID': 1,
-        'content': 'whats up'
+        authorIndex: 1,
+        content: 'whats up'
       }, {
-        'authorID': 0,
-        'content': 'Still wanna hit that tennis ball later?'
+        authorIndex: 0,
+        content: 'Still wanna hit that tennis ball later?'
       }]
     },
-    '2': {
-      '_id': 2,
-      'userIDs': [1, 3],
-      'messages': [{
-        'authorID': 0,
-        'content': 'hey'
+    2: {
+      _id: 2,
+      userIDs: [1, 3],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
       }, {
-        'authorID': 1,
-        'content': 'whats up'
+        authorIndex: 1,
+        content: 'whats up'
       }, {
-        'authorID': 0,
-        'content': 'Still wanna hit that soccer ball later?'
+        authorIndex: 0,
+        content: 'Still wanna hit that soccer ball later?'
       }]
     },
-    '3': {
-      '_id': 3,
-      'userIDs': [2, 3],
-      'messages': [{
-        'authorID': 0,
-        'content': 'hey'
+    3: {
+      _id: 3,
+      userIDs: [2, 3],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
       }, {
-        'authorID': 1,
-        'content': 'whats up'
+        authorIndex: 1,
+        content: 'whats up'
       }, {
-        'authorID': 0,
-        'content': 'one is lame'
+        authorIndex: 0,
+        content: 'one is lame'
       }]
     }
   }

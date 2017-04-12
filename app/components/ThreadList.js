@@ -3,29 +3,32 @@ import {currentUserID} from '../const'
 
 import {thread} from '../propTypes'
 
-function ThreadButton ({thread, selected, onSelectThread}) {
+function ThreadButton ({thread, selected, onSelect}) {
   const otherUsers = thread.users
     .filter(({_id}) => _id !== currentUserID)
     .map(({name}) => name)
     .join(' ')
   return (
     <div className='row'>
-      <div className='col-md-12'>
+      <div className='col-md-12' onClick={() => onSelect(thread)}>
         <div className='media-left media-top'>
                 PIC
             </div>
         <div className='media-body'>
-          <a onClick={onSelectThread}>{otherUsers}</a>
+          {otherUsers}
+
+          {selected ? ' selected' : ' not selected'}
         </div>
+
       </div>
     </div>
   )
 }
 
 ThreadButton.propTypes = {
-  thread: React.PropTypes.shape(thread).isRequired,
-  select: React.PropTypes.bool.isRequired,
-  onSelectThread: React.PropTypes.func.isRequired
+  thread: thread.isRequired,
+  selected: React.PropTypes.bool.isRequired,
+  onSelect: React.PropTypes.func.isRequired
 }
 
 export default function ThreadList ({threads, selectedThread, onSelectThread}) {
@@ -33,9 +36,10 @@ export default function ThreadList ({threads, selectedThread, onSelectThread}) {
     <div>
       {threads.map((thread) => (
         <ThreadButton
+          key={thread._id}
           thread={thread}
-          selected={selectedThread && thread._id === selectedThread._id}
-          onSelectThread={onSelectThread}
+          selected={selectedThread !== null && thread._id === selectedThread._id}
+          onSelect={onSelectThread}
           />
         ))}
     </div>
@@ -44,8 +48,8 @@ export default function ThreadList ({threads, selectedThread, onSelectThread}) {
 
 ThreadList.propTypes = {
   threads: React.PropTypes.arrayOf(
-    React.PropTypes.shape(thread).isRequired
+    thread.isRequired
   ).isRequired,
-  selectedThread: React.PropTypes.number,
+  selectedThread: thread,
   onSelectThread: React.PropTypes.func.isRequired
 }

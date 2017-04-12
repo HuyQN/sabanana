@@ -22,27 +22,24 @@ export function getUser (userID) {
 
 export async function getThreads (userID) {
   const allThreads = readCollection('thread')
-  console.log(allThreads)
   const threads = await emulateServerReturnPromise(
       Object.values(allThreads)
       .filter(({userIDs}) => userIDs.indexOf(userID) !== -1)
   )
   for (const thread of threads) {
+    thread.currentUserIndex = thread.userIDs.indexOf(userID)
     thread.users = await Promise.all(thread.userIDs.map(getUser))
     for (const message of thread.messages) {
-      message.author = thread.users[message.authorID]
+      message.author = thread.users[message.authorIndex]
     }
   }
   return threads
 }
 
 export function sendMessage (thread, message, cb) {
-  thread.messages.append(message)
+  thread.messages.push(message)
   writeDocument('thread', thread)
-  emulateServerReturn(
-    null,
-    cb
-  )
+  return emulateServerReturnPromise(null)
 }
 
 export function getAllPosts (cb) {
