@@ -14,7 +14,7 @@ function emulateServerReturnPromise (data) {
   return new Promise((resolve, reject) => emulateServerReturn(data, resolve))
 }
 
-function getUser (userID) {
+export function getUser (userID) {
   return emulateServerReturnPromise(
     readDocument('user', userID)
   )
@@ -43,4 +43,9 @@ export function sendMessage (thread, message, cb) {
     null,
     cb
   )
+}
+
+export function getAllPosts (cb) {
+  var posts = readCollection('post')
+  return emulateServerReturn(Object.values(posts), cb)
 }

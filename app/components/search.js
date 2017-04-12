@@ -3,24 +3,6 @@ import Posts from './Posts.js';
 import {getAllPosts} from '../server';
 import {resetDatabase} from '../database';
 
-var posts = [{
-  date: 'February 1, 2017',
-  name: 'Catan fun!',
-  tags: [{
-    name: 'board-games'
-  }, {
-    name: 'fun!'
-  }]
-}, {
-  date: 'February 23, 2017',
-  name: 'yeah lots of sports i love sports',
-  tags: [{
-    name: 'good-old-times'
-  }, {
-    name: 'getting-down-to-it'
-  }]
-}]
-
 class Tagbar extends React.Component {
   constructor(props) {
     super(props);
@@ -103,7 +85,7 @@ export default class Search extends React.Component {
       selected_tags: ["Test"],
       data: []
     }
-    getAllPosts((data) => {this.setState({data: data});});
+    getAllPosts((data) => {this.setState({data: data})})
   }
 
   render() {
@@ -112,7 +94,7 @@ export default class Search extends React.Component {
         <div className="clearfix">
           <Tagbar tags={this.state.tags} selected_tags={this.state.selected_tags} />
           <SearchResults search_term={this.props.match.params.query}>
-            <Posts posts={posts} />
+            <Posts posts={this.state.data} />
           </SearchResults>
         </div>
       </div>
