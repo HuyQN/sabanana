@@ -1,38 +1,60 @@
-import React from 'react'
+import React from 'react';
+import Posts from './Posts.js';
+import {getAllPosts} from '../server';
+import {resetDatabase} from '../database';
 
 class Tagbar extends React.Component {
-  render () {
-    return (
-      <div className='col-md-2 panel panel-default tags'>
-        <ul className='nav'>
-          <li role='presentation'>TAGS</li>
-
-          {React.Children.map(this.props.children, function (child) {
-            return (
-              <li role='presentation'>
-                <a href='#'>
-                  {child.props.tag}
-                </a>
-              </li>
-            )
-          })}
-
-        </ul>
-      </div>
-    )
+  constructor(props) {
+    super(props);
+    this.state = {
+      tags: this.props.tags,
+      selected_tags: this.props.selected_tags
+    }
   }
-}
 
-class Result extends React.Component {
-  render () {
+  diff(a, b) {
+    return a.filter((i) => {return b.indexOf(i) < 0;});
+  }
+
+  handleSelect(tag) {
+    var index = this.state.tags.indexOf(tag);
+    this.state.tags.splice(index,1);
+    this.state.selected_tags.push(tag);
+    this.setState({});
+  }
+
+  handleDeselect(tag) {
+    var index = this.state.selected_tags.indexOf(tag);
+    this.state.selected_tags.splice(index,1);
+    this.state.tags.push(tag);
+    this.setState({});
+  }
+
+  render() {
+    var disjoint = this.diff(this.state.tags, this.state.selected_tags);
+    
     return (
-      <div className='panel panel-default'>
-        <div className='panel-body .search-text'>
-          <p>{this.props.text}</p>
-          <p>Username: {this.props.username}</p>
-          <p>Location: {this.props.location}</p>
-          <p>Posted: {this.props.post_date}</p>
-        </div>
+      <div className="col-md-2 panel panel-default tags">
+        <ul className="nav">
+          <li role="presentation">TAGS</li>
+          {this.state.selected_tags.map((tag) => {
+             return(
+               <li role="presentation">
+                 <label type="button" className="btn btn-default active" onClick={() => this.handleDeselect(tag)}>
+                   {tag}
+                 </label>
+               </li>
+             )})}
+          {disjoint.map((tag) => {
+             return(
+               <li role="presentation">
+                 <label type="button" className="btn btn-default" onClick={() => this.handleSelect(tag)}>
+                   {tag}
+                 </label>
+               </li>
+             )})}
+        <li><label type="button" className="btn btn-default" onClick={() => {resetDatabase(); window.alert("Reset DB"); document.location.reload(false);}}>Reset DB</label></li>
+        </ul>
       </div>
     )
   }
@@ -54,35 +76,25 @@ class SearchResults extends React.Component {
 }
 
 export default class Search extends React.Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      /* Tags will need to be the result of a call to the server*/
+      tags: ["Board Games", "Sports", "Music", "Computers", "Clothing", "Language"],
+      /* Always start with no selected tags*/
+      selected_tags: ["Test"],
+      data: []
+    }
+    getAllPosts((data) => {this.setState({data: data})})
+  }
+
+  render() {
     return (
-      <div className='container-fluid'>
-        <div className='clearfix'>
-          <Tagbar>
-            <p tag='Board Games' />
-            <p tag='Sports' />
-            <p tag='Music' />
-            <p tag='Computers' />
-            <p tag='Clothes' />
-            <p tag='Language' />
-          </Tagbar>
+      <div className="container-fluid">
+        <div className="clearfix">
+          <Tagbar tags={this.state.tags} selected_tags={this.state.selected_tags} />
           <SearchResults search_term={this.props.match.params.query}>
-            <Result text='Looking for a tennis buddy! Thursdays at 2:00 would be great.'
-              username='TennisLover'
-              location='Amherst'
-              post_date='2/27/17 12:00' />
-            <Result text='Looking for a tennis buddy! Thursdays at 2:00 would be great.'
-              username='TennisLover'
-              location='Amherst'
-              post_date='2/27/17 12:00' />
-            <Result text='Looking for a tennis buddy! Thursdays at 2:00 would be great.'
-              username='TennisLover'
-              location='Amherst'
-              post_date='2/27/17 12:00' />
-            <Result text='Looking for a tennis buddy! Thursdays at 2:00 would be great.'
-              username='TennisLover'
-              location='Amherst'
-              post_date='2/27/17 12:00' />
+            <Posts posts={this.state.data} />
           </SearchResults>
         </div>
       </div>

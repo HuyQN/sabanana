@@ -32,42 +32,42 @@ var initialData = {
     '1': {
       '_id': 1,
       'authorID': 2,
-      'title': 'Looking Band',
+      'name': 'Looking Band',
       'description': 'I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer',
-      'tags': 'Music',
-      'postDate': 1452690900000
+      'tags': [{name: 'Music'}],
+      'date': 1452690900000
     },
     '2': {
       '_id': 2,
       'authorID': 3,
-      'title': 'Board Games',
+      'name': 'Board Games',
       'description': 'Looking for a group of people to play Munchkins with',
-      'tags': 'Board Games',
-      'postDate': 1453690900000
+      'tags': [{name: 'Board Games'}],
+      'date': 1453690900000
     },
     '3': {
       '_id': 3,
       'authorID': 3,
-      'title': 'Selling Monopoly',
+      'name': 'Selling Monopoly',
       'description': 'Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.',
-      'tags': 'Selling',
-      'postDate': 1453830800000
+      'tags': [{name: 'Selling'}],
+      'date': 1453830800000
     },
     '4': {
       '_id': 4,
       'authorID': 1,
-      'title': 'Football',
+      'name': 'Football',
       'description': 'YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.',
-      'tags': 'Sports',
-      'postDate': 1454003000000
+      'tags': [{name: 'Sports'}],
+      'date': 1454003000000
     },
     '5': {
       '_id': 5,
       'authorID': 4,
-      'title': 'Trying to buy eextbook for econ102',
+      'name': 'Trying to buy eextbook for econ102',
       'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
-      'tags': 'Buying',
-      'postDate': 1454304010000
+      'tags': [{name: 'Buying'}],
+      'date': 1454304010000
     }
   },
   thread: {
@@ -118,7 +118,7 @@ var initialData = {
 
 var data = JSON.parse(localStorage.getItem(startupName))
 if (data === null) {
-  data = JSONClone(initialData)
+  data = JSONClone(data)
 }
 
 /**
