@@ -35,13 +35,16 @@ class NewMessage extends React.Component {
     this.setState({message: e.target.value})
   }
 
-  onSubmit () {
+  onSubmit (e) {
+    e.preventDefault()
     sendMessage(
       this.props.thread,
       {
         authorIndex: this.props.thread.currentUserIndex,
         content: this.state.message
       })
+    .then(this.props.onMessageSend)
+    .then(() => this.setState({message: ''}))
   }
 
   render () {
@@ -55,6 +58,7 @@ class NewMessage extends React.Component {
             <div className='input-group'>
               <input type='text' className='form-control'
                 placeholder='Write a message...'
+                value={this.state.message}
                 onChange={this.setMessage.bind(this)} />
               <span className='input-group-btn'>
                 <button className='btn btn-default' type='button' onClick={this.onSubmit.bind(this)}>
@@ -83,7 +87,7 @@ export default function Thread ({thread, onMessageSend}) {
       <div className='panel-footer'>
 
         <ul className='media-list'>
-          {thread.messages.map((message, i) => <Message key={i} message={message} />)}
+          {thread.messages.map((message, i) => <Message key={`${thread._id}_ ${i}`} message={message} />)}
           <NewMessage thread={thread} onMessageSend={onMessageSend} />
         </ul>
       </div>

@@ -10,7 +10,7 @@ export default class Messages extends React.Component {
     super(props)
     this.state = {
       threads: null,
-      selectedThread: null
+      selectedThreadID: null
     }
     this.refreshThreads()
   }
@@ -30,13 +30,13 @@ export default class Messages extends React.Component {
         <div className='col-md-2 fb-right-sidebar'>
           <ThreadList
             threads={this.state.threads}
-            selectedThread={this.state.selectedThread}
-            onSelectThread={thread => this.setState({selectedThread: thread})}
+            selectedThreadID={this.state.selectedThreadID}
+            onSelectThread={threadID => this.setState({selectedThreadID: threadID})}
           />
         </div>
         <div className='col-md-10'>
           <Thread
-            thread={this.state.selectedThread}
+            thread={this.state.threads.find(({_id}) => _id === this.state.selectedThreadID)}
             onMessageSend={this.refreshThreads.bind(this)}
           />
         </div>

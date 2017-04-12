@@ -37,6 +37,8 @@ export async function getThreads (userID) {
 }
 
 export function sendMessage (thread, message, cb) {
+  // copy so that mutating it won't mess up react
+  thread = JSON.parse(JSON.stringify(thread))
   thread.messages.push(message)
   writeDocument('thread', thread)
   return emulateServerReturnPromise(null)

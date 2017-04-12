@@ -10,7 +10,7 @@ function ThreadButton ({thread, selected, onSelect}) {
     .join(' ')
   return (
     <div className='row'>
-      <div className='col-md-12' onClick={() => onSelect(thread)}>
+      <div className='col-md-12' onClick={() => onSelect(thread._id)}>
         <div className='media-left media-top'>
                 PIC
             </div>
@@ -31,14 +31,14 @@ ThreadButton.propTypes = {
   onSelect: React.PropTypes.func.isRequired
 }
 
-export default function ThreadList ({threads, selectedThread, onSelectThread}) {
+export default function ThreadList ({threads, selectedThreadID, onSelectThread}) {
   return (
     <div>
       {threads.map((thread) => (
         <ThreadButton
           key={thread._id}
           thread={thread}
-          selected={selectedThread !== null && thread._id === selectedThread._id}
+          selected={selectedThreadID !== null && thread._id === selectedThreadID}
           onSelect={onSelectThread}
           />
         ))}
@@ -50,6 +50,6 @@ ThreadList.propTypes = {
   threads: React.PropTypes.arrayOf(
     thread.isRequired
   ).isRequired,
-  selectedThread: thread,
+  selectedThreadID: React.PropTypes.number,
   onSelectThread: React.PropTypes.func.isRequired
 }
