@@ -118,7 +118,7 @@ var initialData = {
 
 var data = JSON.parse(localStorage.getItem(startupName))
 if (data === null) {
-  data = JSONClone(data)
+  data = JSONClone(initialData)
 }
 
 /**
