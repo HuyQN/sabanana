@@ -1,10 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
-=======
+
 import Posts from './Posts.js';
 import {getAllPosts} from '../server';
 import {resetDatabase} from '../database';
->>>>>>> 4125604b755a77cd7c0760c39d8781ea10499c7b
 
 class Tagbar extends React.Component {
   constructor(props) {
@@ -35,7 +33,7 @@ class Tagbar extends React.Component {
 
   render() {
     var disjoint = this.diff(this.state.tags, this.state.selected_tags);
-    
+
     return (
       <div className="col-md-2 panel panel-default tags">
         <ul className="nav">
@@ -78,9 +76,6 @@ class SearchResults extends React.Component {
   }
 }
 
-<<<<<<< HEAD
-class Main extends React.Component {
-=======
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -94,55 +89,16 @@ export default class Search extends React.Component {
     getAllPosts((data) => {this.setState({data: data})})
   }
 
->>>>>>> 4125604b755a77cd7c0760c39d8781ea10499c7b
   render() {
     return (
       <div className="container-fluid">
         <div className="clearfix">
-<<<<<<< HEAD
-          <Tagbar>
-            <p tag="Board Games" />
-            <p tag="Sports" />
-            <p tag="Music" />
-            <p tag="Computers" />
-            <p tag="Clothes" />
-            <p tag="Language" />
-          </Tagbar>
-          <SearchResults search_term="Tennis">
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-            <Result text="Looking for a tennis buddy! Thursdays at 2:00 would be great."
-                    username="TennisLover"
-                    location="Amherst"
-                    post_date="2/27/17 12:00" />
-=======
           <Tagbar tags={this.state.tags} selected_tags={this.state.selected_tags} />
           <SearchResults search_term={this.props.match.params.query}>
             <Posts posts={this.state.data} />
->>>>>>> 4125604b755a77cd7c0760c39d8781ea10499c7b
           </SearchResults>
         </div>
       </div>
     )
-  }
-}
-
-export default class Search extends React.Component {
-  render() {
-    return (
-      <div>
-        <Main />
-      </div>
-    );
   }
 }

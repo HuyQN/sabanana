@@ -4,43 +4,12 @@ export default class UserSettings extends React.Component {
   render () {
     return (
       <div>
-<<<<<<< HEAD
-      <div className="panel panel-default fb-status-update-entry">
-        <div className="panel-body">
-          <a href="#"><h3 className="glyphicon glyphicon-user"></h3><font size="+2"><strong> User Settings</strong></font></a>
-          <div className="media">
-            <br />
-          <a href="#"><span className="glyphicon glyphicon-pencil">
-          </span><font size="+1"><strong> Change Username</strong></font></a>
-            <br />
-            <br />
-            <br />
-          <a href="#"><span className="glyphicon glyphicon-pencil">
-          </span><font size="+1"><strong> Edit Avatar</strong></font></a>
-            <br />
-            <br />
-            <br />
-          <a href="#"><span className="glyphicon glyphicon-pencil">
-          </span><font size="+1"><strong> Edit Bio</strong></font></a>
-            <br />
-            <br />
-            <br />
-          <a href="#"><span className="glyphicon glyphicon-pencil">
-          </span><font size="+1"><strong> Add / Edit / Delete Posts</strong></font></a>
-        <br />
-      </div>
-      </div>
-=======
         <div className='panel panel-default fb-status-update-entry'>
           <div className='panel-body'>
             <a href='#'><h3 className='glyphicon glyphicon-user' /><font size='+2'><strong> User Settings</strong></font></a>
             <div className='media'>
               <br />
               <a href='#'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Change Username</strong></font></a>
-              <br />
-              <br />
-              <br />
-              <a href='#'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Change Password</strong></font></a>
               <br />
               <br />
               <br />
@@ -53,10 +22,10 @@ export default class UserSettings extends React.Component {
               <br />
               <br />
               <a href='#'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Add / Edit / Delete Posts</strong></font></a>
+              <br />
             </div>
           </div>
         </div>
->>>>>>> 4125604b755a77cd7c0760c39d8781ea10499c7b
       </div>
     )
   }
