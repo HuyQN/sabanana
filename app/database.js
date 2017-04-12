@@ -75,13 +75,13 @@ var initialData = {
       _id: 1,
       userIDs: [1, 2],
       messages: [{
-        authorID: 0,
+        authorIndex: 0,
         content: 'hey'
       }, {
-        authorID: 1,
+        authorIndex: 1,
         content: 'whats up'
       }, {
-        authorID: 0,
+        authorIndex: 0,
         content: 'Still wanna hit that tennis ball later?'
       }]
     },
@@ -89,13 +89,13 @@ var initialData = {
       _id: 2,
       userIDs: [1, 3],
       messages: [{
-        authorID: 0,
+        authorIndex: 0,
         content: 'hey'
       }, {
-        authorID: 1,
+        authorIndex: 1,
         content: 'whats up'
       }, {
-        authorID: 0,
+        authorIndex: 0,
         content: 'Still wanna hit that soccer ball later?'
       }]
     },
@@ -103,13 +103,13 @@ var initialData = {
       _id: 3,
       userIDs: [2, 3],
       messages: [{
-        authorID: 0,
+        authorIndex: 0,
         content: 'hey'
       }, {
-        authorID: 1,
+        authorIndex: 1,
         content: 'whats up'
       }, {
-        authorID: 0,
+        authorIndex: 0,
         content: 'one is lame'
       }]
     }

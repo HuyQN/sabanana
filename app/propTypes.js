@@ -7,13 +7,14 @@ export const user = PropTypes.shape({
 })
 
 export const message = PropTypes.shape({
-  authorID: PropTypes.number.isRequired,
+  authorIndex: PropTypes.number.isRequired,
   author: user.isRequired,
   content: PropTypes.string.isRequired
 })
 
 export const thread = PropTypes.shape({
   _id: PropTypes.number.isRequired,
+  currentUserIndex: PropTypes.number.isRequired,
   userIDs: PropTypes.arrayOf(
     PropTypes.number.isRequired
   ).isRequired,

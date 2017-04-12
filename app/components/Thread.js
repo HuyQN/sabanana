@@ -2,6 +2,8 @@ import React from 'react'
 
 import {thread} from '../propTypes'
 
+import {sendMessage} from '../server'
+
 function Message ({message: {author, content}}) {
   return (
     <li className='media'>
@@ -20,6 +22,58 @@ Thread.propTypes = {
   onMessageSend: React.PropTypes.func.isRequired
 }
 
+class NewMessage extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      message: ''
+    }
+  }
+
+  setMessage (e) {
+    e.preventDefault()
+    this.setState({message: e.target.value})
+  }
+
+  onSubmit () {
+    sendMessage(
+      this.props.thread,
+      {
+        authorIndex: this.props.thread.currentUserIndex,
+        content: this.state.message
+      })
+  }
+
+  render () {
+    return (
+      <li className='media'>
+        <div className='media-left media-top'>
+            PIC
+          </div>
+        <div className='media-body'>
+          <form onSubmit={this.onSubmit.bind(this)}>
+            <div className='input-group'>
+              <input type='text' className='form-control'
+                placeholder='Write a message...'
+                onChange={this.setMessage.bind(this)} />
+              <span className='input-group-btn'>
+                <button className='btn btn-default' type='button' onClick={this.onSubmit.bind(this)}>
+                  <span className='glyphicon glyphicon-ok' />
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </li>
+    )
+  }
+}
+
+NewMessage.propTypes = {
+  thread: thread.isRequired,
+  onMessageSend: React.PropTypes.func.isRequired
+}
+
 export default function Thread ({thread, onMessageSend}) {
   if (!thread) {
     return <div>select a thread</div>
@@ -30,23 +84,7 @@ export default function Thread ({thread, onMessageSend}) {
 
         <ul className='media-list'>
           {thread.messages.map((message, i) => <Message key={i} message={message} />)}
-          <li className='media'>
-            <div className='media-left media-top'>
-                PIC
-              </div>
-            <div className='media-body'>
-              <div className='input-group'>
-                <input type='text' className='form-control'
-                  placeholder='Write a message...' />
-                <span className='input-group-btn'>
-                  <button className='btn btn-default' type='button'>
-                    <span className='glyphicon glyphicon-ok' />
-                  </button>
-                </span>
-              </div>
-            </div>
-          </li>
-
+          <NewMessage thread={thread} onMessageSend={onMessageSend} />
         </ul>
       </div>
     </div>
