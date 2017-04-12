@@ -33,6 +33,7 @@ function App () {
         <Route path='/settings/' component={UserSettings} />
         <Route path='/edit/:postId' component={AddPost} />
         <Route path='/search/:query' component={Search} />
+        <Route path='/post/:postId' component={Viewedpost}/>
       </div>
     </Router>
   )
