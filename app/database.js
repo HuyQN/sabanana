@@ -6,95 +6,115 @@ var startupName = 'sabanana'
 
 // Put your mock objects here, as in Workshop 4
 var initialData = {
-  "users": {
-    "1":{
-      "_id": 1, 
-      "name": "Bob",
-      "bio": "Train club best club"
-    }
-    "2":{
-      "_id": 2,
-      "name": "Jill",
-      "bio": "Insert very long text here"
-    }
-    "3":{
-      "_id": 3,
-      "name": "Jack",
-      "bio": "Jill is very mean"
-    }
-    "4":{
-      "_id": 4,
-      "name": "La-a",
-      "bio": "It's pronounces Ladasha"
-    }
-  },
-  "posts": {
-    "1": {
-      "_id": 1,
-      "author": 2,
-      "title": "Looking Band",
-      "description": "I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer"
-      "tags": "Music",
-      "postDate": 1452690900000
+  'user': {
+    '1': {
+      '_id': 1,
+      'name': 'Bob',
+      'bio': 'Train club best club'
     },
-    "2": {
-      "_id": 2,
-      "author": 3,
-      "title": "Board Games",
-      "description": "Looking for a group of people to play Munchkins with"
-      "tags": "Board Games",
-      "postDate": 1453690900000
+    '2': {
+      '_id': 2,
+      'name': 'Jill',
+      'bio': 'Insert very long text here'
     },
-    "3": {
-      "_id": 3,
-      "author": 3,
-      "title": "Selling Monopoly",
-      "description": "Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.",
-      "tags": "Selling",
-      "postDate": 1453830800000
+    '3': {
+      '_id': 3,
+      'name': 'Jack',
+      'bio': 'Jill is very mean'
     },
-    "4": {
-      "_id": 4,
-      "author": 1,
-      "title": "Football",
-      "description": "YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.",
-      "tags": "Sports",
-      "postDate": 1454003000000 
-    },
-    "5": {
-      "_id": 5,
-      "author": 4,
-      "title": "Trying to buy eextbook for econ102",
-      "description": "I need the textbook for econ102, and will only pay $15 for it, no negotiations.",
-      "tags": "Buying",
-      "postDate": 1454304010000
+    '4': {
+      '_id': 4,
+      'name': 'La-a',
+      'bio': "It's pronounces Ladasha"
     }
   },
-  "message": {
-    "1": {
-      "_id": 1,
-      "sender": 1,
-      "receiver": 4,
-      "messageContent": "YO got a book I can sell you you",
-      "messageDate": 1253901230000
+  'post': {
+    '1': {
+      '_id': 1,
+      'authorID': 2,
+      'name': 'Looking Band',
+      'description': 'I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer',
+      'tags': [{name: 'Music'}],
+      'date': 1452690900000
     },
-    "2": {
-      "_id": 2,
-      "sender": 4,
-      "receiver": 1,
-      "messageContent": "Ok let's meet up at ______",
-      "messageDate": 1254101230000
+    '2': {
+      '_id': 2,
+      'authorID': 3,
+      'name': 'Board Games',
+      'description': 'Looking for a group of people to play Munchkins with',
+      'tags': [{name: 'Board Games'}],
+      'date': 1453690900000
     },
-    "3": {
-      "_id": 3,
-      "sender": 1,
-      "receiver": 4,
-      "messageContent": "Aight sounds good",
-      "messageDate": 1254201230000
+    '3': {
+      '_id': 3,
+      'authorID': 3,
+      'name': 'Selling Monopoly',
+      'description': 'Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.',
+      'tags': [{name: 'Selling'}],
+      'date': 1453830800000
+    },
+    '4': {
+      '_id': 4,
+      'authorID': 1,
+      'name': 'Football',
+      'description': 'YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.',
+      'tags': [{name: 'Sports'}],
+      'date': 1454003000000
+    },
+    '5': {
+      '_id': 5,
+      'authorID': 4,
+      'name': 'Trying to buy eextbook for econ102',
+      'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
+      'tags': [{name: 'Buying'}],
+      'date': 1454304010000
+    }
+  },
+  thread: {
+    1: {
+      _id: 1,
+      userIDs: [1, 2],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
+      }, {
+        authorIndex: 1,
+        content: 'whats up'
+      }, {
+        authorIndex: 0,
+        content: 'Still wanna hit that tennis ball later?'
+      }]
+    },
+    2: {
+      _id: 2,
+      userIDs: [1, 3],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
+      }, {
+        authorIndex: 1,
+        content: 'whats up'
+      }, {
+        authorIndex: 0,
+        content: 'Still wanna hit that soccer ball later?'
+      }]
+    },
+    3: {
+      _id: 3,
+      userIDs: [2, 3],
+      messages: [{
+        authorIndex: 0,
+        content: 'hey'
+      }, {
+        authorIndex: 1,
+        content: 'whats up'
+      }, {
+        authorIndex: 0,
+        content: 'one is lame'
+      }]
     }
   }
 }
-
 
 var data = JSON.parse(localStorage.getItem(startupName))
 if (data === null) {
@@ -118,6 +138,10 @@ export function readDocument (collection, id) {
   // Clone the data. We do this to model a database, where you receive a
   // *copy* of an object and not the object itself.
   return JSONClone(data[collection][id])
+}
+
+export function readCollection (collection) {
+  return JSONClone(data[collection])
 }
 
 /**
