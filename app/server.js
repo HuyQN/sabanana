@@ -48,3 +48,8 @@ export function getAllPosts (cb) {
   var posts = readCollection('post')
   return emulateServerReturn(Object.values(posts), cb)
 }
+
+export function getPost (id) {
+  var post = readDocument('post', id)
+  return emulateServerReturnPromise(post)
+}

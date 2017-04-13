@@ -1,6 +1,9 @@
 import React from 'react'
 import {getUser} from '../server'
 import {unixTimeToString} from '../util'
+import {
+  Link
+} from 'react-router-dom'
 
 function Tag ({name}) {
   return <a href='#'><em className='text-info'>{name}</em></a>
@@ -28,7 +31,7 @@ class Post extends React.Component {
     var convertedTime = unixTimeToString(this.props.date)
     return (
       <li>
-        <a>{this.props.name} by {this.state.author}</a>
+        <Link to={`/post/${this.props._id}`}>{this.props.name} by {this.state.author}</Link>
         <span className='text-muted'> at {convertedTime}</span>
         <p>{this.props.description}</p>
         <Tags tags={this.props.tags} />
@@ -59,6 +62,7 @@ export default function Posts ({posts, includeHeader}) {
                      name={post.name}
                      description={post.description}
                      tags={post.tags}
+                     _id={post._id}
                      date={post.date} />)})}
         </ul>
       </div>
