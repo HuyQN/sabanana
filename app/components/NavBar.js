@@ -1,4 +1,5 @@
 import React from 'react'
+import {currentUserID} from '../const'
 import {
   Link
 } from 'react-router-dom'
@@ -63,7 +64,7 @@ export default class NavBar extends React.Component {
                         <span className='glyphicon glyphicon-cog' aria-hidden='true' />
                       </button>
                       <ul className='dropdown-menu'>
-                        <li><Link to='/user/'>Profile</Link></li>
+                        <li><Link to={`/user/${currentUserID}`}>Profile</Link></li>
                         <li><Link to='/settings/'>User Settings</Link></li>
                         <li><Link to='/messages/'>Messages</Link></li>
                         <li><Link to='/add/'>Create Post</Link></li>

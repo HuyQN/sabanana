@@ -27,7 +27,7 @@ function App () {
         <NavBar />
 
         <Route exact path='/' component={HomeScreen} />
-        <Route path='/user/' component={User} />
+        <Route path='/user/:userID' component={User} />
         <Route path='/messages/' component={Messages} />
         <Route path='/add/' component={AddPost} />
         <Route path='/settings/' component={UserSettings} />

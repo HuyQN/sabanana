@@ -48,3 +48,12 @@ export function getAllPosts (cb) {
   var posts = readCollection('post')
   return emulateServerReturn(Object.values(posts), cb)
 }
+
+export async function getUsersPosts(userID){
+  const AllPosts = readCollection('post')
+  const Posts = await emulateServerReturnPromise(
+      Object.values(AllPosts)
+      .filter(({userID}) => userID.indexOf(userID) !== -1)
+  )
+  return Posts
+}
