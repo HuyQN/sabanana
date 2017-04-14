@@ -22,32 +22,45 @@ export default class AddPost extends React.Component {
     }
   }
 
-  onEnterPress (keyEvent) {
+  handleClearAll(clickEvent){
+    clickEvent.preventDefault()
+    if(clickEvent.button === 0){
+      document.getElementById("titleArea").value ="";
+      document.getElementById("descArea").value="";
+      document.getElementById("tagArea").value="";
+      this.extra = [];
+      blist.map(function(item){
+          document.getElementById(item).className = 'unselected btn tag-buttons';
+      })
+      this.setState({title: ""})
+    }
+  }
+
+  onEnterPress(keyEvent) {
     if (keyEvent.keyCode == 13) {
       //this.extra[this.extra.length] = document.getElementById('tagArea').value
       //document.getElementById('tagArea').value =""
+      var word = document.getElementById("tagArea").value;
+      if(blist.lastIndexOf(word) == -1 && this.extra.lastIndexOf(word) == -1){
+          this.extra[this.extra.length] = document.getElementById("tagArea").value;
+      } else{
+          document.getElementById(word).className = 'selected btn tag-buttons';
+      }
+      this.setState({title: this.state.title});
       document.getElementById("tagArea").value = "";
       return false;
     } else {
-      document.getElementById("tagArea").value = document.getElementById("tagArea").value;
       return true;
     }
   }
-/*
-  handleTitleChange(e){
-    e.preventDefault();
-    this.setState({this.state.title: e.target.value});
+
+  handleTitleChange(keyEvent){
+    if(keyEvent.keyCode == 13){
+      keyEvent.preventDefault();
+      return false;
+    }
   }
 
-  handleDescChange(e){
-    e.preventDefault();
-    this.setState({obj.desc: e.target.value});
-  }
-
-  handleTagChange(e){
-    e.preventDefault();
-    this.setState({obj.tag: e.target.value});
-  } */
 
   render () {
     var current = this
@@ -59,7 +72,7 @@ export default class AddPost extends React.Component {
           </div>
           <div className='col-md-5 box'>
             <div className='form-group text-box'>
-              <textarea className='form-control' rows='1' placeholder='Insert Title Here' value={this.state.title} onChange={(e) => current.handleTitleChange(e)} />
+              <textarea className='form-control' id="titleArea" rows='1' placeholder='Insert Title Here' onKeyDown={(e) => current.handleTitleChange(e)} />
             </div>
           </div>
         </div>
@@ -69,7 +82,7 @@ export default class AddPost extends React.Component {
           </div>
           <div className='col-md-7'>
             <div className='form-group text-box'>
-              <textarea className='form-control ' rows='6' placeholder='Insert Description Here' value={this.state.desc} onChange={(e) => current.handleDescChange(e)} />
+              <textarea className='form-control' id="descArea" rows='6' placeholder='Insert Description Here' />
             </div>
           </div>
         </div>
@@ -103,7 +116,7 @@ export default class AddPost extends React.Component {
             </button>
           </div>
           <div className='col-md-1'>
-            <button type='button' className='btn btn-default'>
+            <button type='button' onClick={(e) => this.handleClearAll(e)} className='btn btn-default'>
               Clear All
             </button>
           </div>
