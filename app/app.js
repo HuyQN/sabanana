@@ -31,7 +31,7 @@ function App () {
         <Route path='/messages/' component={Messages} />
         <Route path='/add/' component={AddPost} />
         <Route path='/settings/' component={UserSettings} />
-        <Route path='/edit/:postId' component={AddPost} />
+        <Route path='/edit/:postId' component={EditPost} />
         <Route path='/search/:query' component={Search} />
         <Route path='/post/:postId' component={Displaypost}/>
       </div>

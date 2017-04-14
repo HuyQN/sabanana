@@ -61,3 +61,24 @@ export function getPost (id) {
   var post = readDocument('post', id)
   return emulateServerReturnPromise(post)
 }
+
+
+export function getPostCB (id,cb) {
+  var post = readDocument('post', id)
+  return emulateServerReturnPromise(post,cb)
+}
+
+export function createPost(owner,title,desc,tags,cb){
+  var time = new Date().time();
+  var newPost ={
+    "authorID": owner,
+    "name": title,
+    "description": desc,
+    "tags": tags,
+    "date": time
+  };
+
+  newPost = addDocument('post',newPost);
+
+  emulateServerReturn(newPost,cb);
+}

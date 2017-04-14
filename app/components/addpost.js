@@ -85,11 +85,6 @@ export default class AddPost extends React.Component {
     }
   }
 
-  testingDelete(){
-    blist[blist.length] = "testing";
-  }
-
-
   render () {
     var current = this
     return (
