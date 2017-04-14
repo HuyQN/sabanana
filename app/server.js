@@ -57,3 +57,7 @@ export async function getUsersPosts(userID){
   )
   return Posts
 }
+export function getPost (id) {
+  var post = readDocument('post', id)
+  return emulateServerReturnPromise(post)
+}
