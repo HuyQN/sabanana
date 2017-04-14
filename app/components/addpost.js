@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+  Link
+} from 'react-router-dom'
 
 var blist = ['Board Games', 'Sports', 'Music',
   'Studying', 'Video Games', 'Selling',
@@ -36,6 +39,27 @@ export default class AddPost extends React.Component {
     }
   }
 
+  onPostClick(clickEvent){
+    var fTitle = document.getElementById("titleArea").value;
+    var fDesc = document.getElementById("descArea").value;
+    var tags = getTagList();
+  }
+
+  getTagList(){
+    var results =[];
+    blist.map(function(item){
+      if(document.getElementById(item).className.match(/(?:^|\s)selected(?!\S)/)){
+        results[results.length] = item;
+      }
+    })
+    this.extra.map(function(item){
+      if(document.getElementById(item).className.match(/(?:^|\s)selected(?!\S)/)){
+        results[results.length] = item;
+      }
+    })
+    return results;
+  }
+
   onEnterPress(keyEvent) {
     if (keyEvent.keyCode == 13) {
       //this.extra[this.extra.length] = document.getElementById('tagArea').value
@@ -59,6 +83,10 @@ export default class AddPost extends React.Component {
       keyEvent.preventDefault();
       return false;
     }
+  }
+
+  testingDelete(){
+    blist[blist.length] = "testing";
   }
 
 
@@ -121,9 +149,11 @@ export default class AddPost extends React.Component {
             </button>
           </div>
           <div className='col-md-1'>
-            <button type='button' className='btn btn-default'>
-              Delete
-            </button>
+            <Link to='/'>
+              <button type='button' onClick={(e) => this.onPostClick(e)} className='btn btn-default'>
+                Delete
+              </button>
+            </Link>
           </div>
         </div>
       </div>
