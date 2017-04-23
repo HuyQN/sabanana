@@ -3,7 +3,7 @@ import {getUser} from '../server'
 import Posts from './Posts'
 //import {user} from '../propTypes'
 import getUsersPosts from '../server.js'
-import Bio from './Bio'
+import Bio from './bio'
 import MessageLink from './MessageLink'
 
 export default class User extends React.Component {
