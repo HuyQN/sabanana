@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 function Tag ({name}) {
-  return <a href='#'><em className='text-info'>{name}</em></a>
+  return <a href='#' key={name}><em className='text-info'>{name}</em></a>
 }
 
 function Tags ({tags}) {
@@ -23,11 +23,10 @@ class Post extends React.Component {
     this.state = {
       author: ""
     }
+    getUser(this.props.authorID).then((user) => {this.setState({author: user.name})})
   }
 
   render() {
-    getUser(this.props.authorID).then((user) => {this.setState({author: user.name})})
-    console.log(this.state.author)
     var convertedTime = unixTimeToString(this.props.date)
     return (
       <li>
@@ -58,7 +57,8 @@ export default function Posts ({posts, includeHeader}) {
         <ul className='list-unstyled posts'>
           {posts.map((post) => {
              return(
-               <Post authorID={post.authorID}
+               <Post key={post._id}
+                     authorID={post.authorID}
                      name={post.name}
                      description={post.description}
                      tags={post.tags}
