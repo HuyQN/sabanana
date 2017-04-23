@@ -24,7 +24,7 @@ var initialData = {
     },
     '4': {
       '_id': 4,
-      'name': 'La-a',
+      'name': 'Ladecha',
       'bio': "It's pronounces Ladasha"
     }
   },
@@ -64,7 +64,7 @@ var initialData = {
     '5': {
       '_id': 5,
       'authorID': 4,
-      'name': 'Trying to buy eextbook for econ102',
+      'name': 'Trying to buy textbook for econ102',
       'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
       'tags': [{name: 'Buying'}],
       'date': 1454304010000
