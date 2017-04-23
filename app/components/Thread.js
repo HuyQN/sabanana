@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {thread} from '../propTypes'
-
+import UserLink from './UserLink'
 import {sendMessage} from '../server'
 
 function Message ({message: {author, content}}) {
@@ -11,7 +11,7 @@ function Message ({message: {author, content}}) {
           PIC
         </div>
       <div className='media-body'>
-        <a href='#'>{author.name}</a>: {content}
+        <UserLink user={author} />: {content}
       </div>
     </li>
   )
