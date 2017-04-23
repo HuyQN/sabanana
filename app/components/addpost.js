@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Link
 } from 'react-router-dom'
+import {createPost} from '../server'
 
 var blist = ['Board Games', 'Sports', 'Music',
   'Studying', 'Video Games', 'Selling',
@@ -39,11 +40,22 @@ export default class AddPost extends React.Component {
     }
   }
 
-  /**onPostClick(clickEvent){
+  onPostClick(clickEvent){
     var fTitle = document.getElementById("titleArea").value;
     var fDesc = document.getElementById("descArea").value;
-    var tags = getTagList();
-  }*/
+    var tags = [];
+    blist.map(function(item){
+      if(document.getElementById(item).className.match(/(?:^|\s)selected(?!\S)/)){
+        tags.push(item);
+      }
+    })
+    this.extra.map(function(item){
+      if(document.getElementById(item).className.match(/(?:^|\s)selected(?!\S)/)){
+        tags.push(item);
+      }
+    })
+    createPost(4,fTitle, fDesc, tags)
+  }
 
   getTagList(){
     var results =[];
@@ -134,9 +146,11 @@ export default class AddPost extends React.Component {
 
         <div className='row'>
           <div className='col-md-6'>
-            <button type='button' className='btn btn-default'>
-              Post
-            </button>
+            <Link to='/'>
+              <button type='button' onClick={(e) => this.onPostClick(e)} className='btn btn-default'>
+                Post
+              </button>
+            </Link>
           </div>
           <div className='col-md-1'>
             <button type='button' onClick={(e) => this.handleClearAll(e)} className='btn btn-default'>
@@ -145,7 +159,7 @@ export default class AddPost extends React.Component {
           </div>
           <div className='col-md-1'>
             <Link to='/'>
-              <button type='button' onClick={(e) => this.onPostClick(e)} className='btn btn-default'>
+              <button type='button' className='btn btn-default'>
                 Delete
               </button>
             </Link>

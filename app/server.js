@@ -92,17 +92,19 @@ export async function getPost (id) {
   return post
 }
 
-export function createPost (owner, title, desc, tags, cb) {
-  var time = new Date().time()
+export function createPost (owner, title, desc, tags) {
+  var time = new Date()
+  var newTags =[]
+  tags.map(function(item){
+    newTags.push({name: item})
+  })
   var newPost = {
     'authorID': owner,
     'name': title,
     'description': desc,
-    'tags': tags,
+    'tags': newTags,
     'date': time
   }
 
   newPost = addDocument('post', newPost)
-
-  emulateServerReturn(newPost, cb)
 }
