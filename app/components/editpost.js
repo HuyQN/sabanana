@@ -1,5 +1,5 @@
 import React from 'react'
-import {getPost,createPost} from '../server.js'
+//import {getPost,createPost} from '../server.js'
 import {
   Link
 } from 'react-router-dom'
@@ -53,11 +53,11 @@ export default class EditPost extends React.Component {
     }
   }
 
-  onPostClick(clickEvent){
+  /**onPostClick(clickEvent){
     var fTitle = document.getElementById("titleArea").value;
     var fDesc = document.getElementById("descArea").value;
     var tags = getTagList();
-  }
+  }*/
 
   getTagList(){
     var results =[];
