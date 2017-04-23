@@ -40,8 +40,37 @@ export function sendMessage (thread, message, cb) {
   // copy so that mutating it won't mess up react
   thread = JSON.parse(JSON.stringify(thread))
   thread.messages.push(message)
+  delete thread.users
+  delete thread.currentUserID
   writeDocument('thread', thread)
   return emulateServerReturnPromise(null)
+}
+
+// from http://stackoverflow.com/a/31129384/907060
+function sameValues (array1, array2) {
+  const as = new Set(array1)
+  const bs = new Set(array2)
+  if (as.size !== bs.size) return false
+  for (var a of as) if (!bs.has(a)) return false
+  return true
+}
+
+export async function getOrCreateThread (userIDs) {
+  const allThreads = readCollection('thread')
+  const thread = await emulateServerReturnPromise(
+      Object.values(allThreads)
+      .find(({userIDs: currentUserIDs}) => sameValues(currentUserIDs, userIDs))
+  )
+  if (thread) {
+    return thread
+  }
+  return addDocument(
+    'thread',
+    {
+      userIDs,
+      messages: []
+    }
+  )
 }
 
 export function getAllPosts (cb) {
@@ -49,7 +78,7 @@ export function getAllPosts (cb) {
   return emulateServerReturn(Object.values(posts), cb)
 }
 
-export async function getUsersPosts(userID){
+export async function getUsersPosts (userID) {
   const AllPosts = readCollection('post')
   const Posts = await emulateServerReturnPromise(
       Object.values(AllPosts)
@@ -63,17 +92,17 @@ export async function getPost (id) {
   return post
 }
 
-export function createPost(owner,title,desc,tags,cb){
-  var time = new Date().time();
-  var newPost ={
-    "authorID": owner,
-    "name": title,
-    "description": desc,
-    "tags": tags,
-    "date": time
-  };
+export function createPost (owner, title, desc, tags, cb) {
+  var time = new Date().time()
+  var newPost = {
+    'authorID': owner,
+    'name': title,
+    'description': desc,
+    'tags': tags,
+    'date': time
+  }
 
-  newPost = addDocument('post',newPost);
+  newPost = addDocument('post', newPost)
 
-  emulateServerReturn(newPost,cb);
+  emulateServerReturn(newPost, cb)
 }

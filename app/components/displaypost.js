@@ -1,6 +1,7 @@
 import React from 'react'
 import Viewedpost from './viewedpost'
 import {getPost} from '../server'
+import MessageLink from './MessageLink'
 
 export default class Displaypost extends React.Component {
   constructor (props) {
@@ -29,12 +30,7 @@ export default class Displaypost extends React.Component {
             <div className='row'>
               <div className='col-md-4'>
                 <div className='btn-group' role='group' aria-label='...'>
-                  <button type='button' className='btn btn-default'>Message</button>
-                </div>
-              </div>
-              <div className='col-md-4'>
-                <div className='btn-group' role='group' aria-label='...'>
-                  <button type='button' className='btn btn-default'>Back</button>
+                  <MessageLink user={this.state.post.author} />
                 </div>
               </div>
             </div>

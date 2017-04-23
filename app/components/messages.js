@@ -10,7 +10,7 @@ export default class Messages extends React.Component {
     super(props)
     this.state = {
       threads: null,
-      selectedThreadID: null
+      selectedThreadID: parseInt(this.props.match.params.threadID)
     }
     this.refreshThreads()
   }
@@ -19,6 +19,10 @@ export default class Messages extends React.Component {
     getThreads(currentUserID).then(
       threads => this.setState({threads})
     )
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({selectedThreadID: parseInt(this.props.match.params.threadID)})
   }
 
   render () {
@@ -31,7 +35,6 @@ export default class Messages extends React.Component {
           <ThreadList
             threads={this.state.threads}
             selectedThreadID={this.state.selectedThreadID}
-            onSelectThread={threadID => this.setState({selectedThreadID: threadID})}
           />
         </div>
         <div className='col-md-10'>
