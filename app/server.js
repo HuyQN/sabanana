@@ -82,7 +82,7 @@ export async function getUsersPosts (userID) {
   const AllPosts = readCollection('post')
   const Posts = await emulateServerReturnPromise(
       Object.values(AllPosts)
-      .filter(({userID}) => userID.indexOf(userID) !== -1)
+      .filter((user) => user.authorID == userID)
   )
   return Posts
 }

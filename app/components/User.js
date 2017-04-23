@@ -2,7 +2,7 @@ import React from 'react'
 import {getUser} from '../server'
 import Posts from './Posts'
 //import {user} from '../propTypes'
-import getUsersPosts from '../server.js'
+import {getUsersPosts} from '../server.js'
 import Bio from './bio'
 import MessageLink from './MessageLink'
 
@@ -10,9 +10,11 @@ export default class User extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      user: null
+      user: null,
+      data: []
     }
-    this.refreshUser()
+    this.refreshUser(),
+    getUsersPosts(this.props.match.params.userID).then((data) => this.setState({data}))
   }
 
   refreshUser () {
@@ -36,6 +38,11 @@ export default class User extends React.Component {
               <MessageLink user={this.state.user} />
             </div>
           </div>
+        </div>
+        <div className='row'>
+        	<div className='col-md-8'>
+        		<Posts posts={this.state.data} />
+        	</div>
         </div>
       </div>
     )
