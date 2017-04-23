@@ -93,9 +93,9 @@ export async function getPost (id) {
 }
 
 export function getBio(id) {
-  var bio = readDocument('bio', id) {
-    return emulate ServerReturnPromise(bio)
-  }
+  var bio = readDocument('bio', id) 
+    return emulateServerReturnPromise(bio)
+  
 }
 
 export function createPost (owner, title, desc, tags, cb) {

@@ -2,8 +2,8 @@ import React from 'react'
 import Viewedpost from './viewedpost'
 import {getPost} from '../server'
 import MessageLink from './MessageLink'
-import{getBio} from './server'
-import {getUser} from './server'
+import{getBio} from '../server'
+import {getUser} from '../server'
 
 export default class Displaypost extends React.Component {
   constructor (props) {
