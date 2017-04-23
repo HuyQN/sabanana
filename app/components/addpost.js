@@ -39,11 +39,11 @@ export default class AddPost extends React.Component {
     }
   }
 
-  onPostClick(clickEvent){
+  /**onPostClick(clickEvent){
     var fTitle = document.getElementById("titleArea").value;
     var fDesc = document.getElementById("descArea").value;
     var tags = getTagList();
-  }
+  }*/
 
   getTagList(){
     var results =[];
