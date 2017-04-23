@@ -25,3 +25,15 @@ export const thread = PropTypes.shape({
     message.isRequired
   ).isRequired
 })
+
+export const post = PropTypes.shape({
+  _id: PropTypes.number.isRequired,
+  authorID: PropTypes.number.isRequired,
+  author: user.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(
+    PropTypes.string.isRequired
+  ).isRequired,
+  date: PropTypes.number.isRequired
+})

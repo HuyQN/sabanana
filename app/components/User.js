@@ -3,6 +3,8 @@ import {getUser} from '../server'
 import Posts from './Posts'
 //import {user} from '../propTypes'
 import getUsersPosts from '../server.js'
+import Bio from './Bio'
+
 export default class User extends React.Component {
   constructor (props) {
     super(props)
@@ -25,15 +27,7 @@ export default class User extends React.Component {
     return (
       <div className='container'>
         <div className='row'>
-          <div className='col-xs-4'>
-            <div className='thumbnail'>
-              <img src={'http://placehold.it/350x350'} />
-              <div className='caption'>
-                <h1>{this.state.user.name}</h1>
-                <p>{this.state.user.bio}</p>
-              </div>
-            </div>
-          </div>
+          <Bio user={this.state.user} />
         </div>
       </div>
     )
