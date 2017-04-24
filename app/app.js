@@ -30,7 +30,7 @@ function App () {
         <Route path='/messages/:threadID' component={Messages} />
         <Route path='/add/' component={AddPost} />
         <Route path='/settings/' component={UserSettings} />
-        <Route path='/edit/:postId' component={EditPost} />
+        <Route path='/edit/:postID' component={EditPost} />
         <Route path='/search/:query' component={Search} />
         <Route path='/post/:postId' component={Displaypost}/>
       </div>

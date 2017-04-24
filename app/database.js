@@ -34,7 +34,7 @@ var initialData = {
       'authorID': 2,
       'name': 'Looking Band',
       'description': 'I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer',
-      'tags': [{name: 'Music'}],
+      'tags': ['Music'],
       'date': 1452690900000
     },
     '2': {
@@ -42,7 +42,7 @@ var initialData = {
       'authorID': 3,
       'name': 'Board Games',
       'description': 'Looking for a group of people to play Munchkins with',
-      'tags': [{name: 'Board Games'}],
+      'tags': ['Board Games'],
       'date': 1453690900000
     },
     '3': {
@@ -50,7 +50,7 @@ var initialData = {
       'authorID': 3,
       'name': 'Selling Monopoly',
       'description': 'Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.',
-      'tags': [{name: 'Selling'}],
+      'tags': ['Selling'],
       'date': 1453830800000
     },
     '4': {
@@ -58,7 +58,7 @@ var initialData = {
       'authorID': 1,
       'name': 'Football',
       'description': 'YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.',
-      'tags': [{name: 'Sports'}],
+      'tags': ['Sports'],
       'date': 1454003000000
     },
     '5': {
@@ -66,7 +66,7 @@ var initialData = {
       'authorID': 4,
       'name': 'Trying to buy textbook for econ102',
       'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
-      'tags': [{name: 'Buying'}],
+      'tags': ['Buying'],
       'date': 1454304010000
     }
   },

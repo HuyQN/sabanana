@@ -73,9 +73,12 @@ export async function getOrCreateThread (userIDs) {
   )
 }
 
-export function getAllPosts (cb) {
-  var posts = readCollection('post')
-  return emulateServerReturn(Object.values(posts), cb)
+export async function getAllPosts () {
+  const posts = await emulateServerReturnPromise(Object.values(readCollection('post')))
+  for (const post of posts) {
+    post.author = await getUser(post.authorID)
+  }
+  return posts
 }
 
 export async function getUsersPosts (userID) {
@@ -92,19 +95,22 @@ export async function getPost (id) {
   return post
 }
 
-export function createPost (owner, title, desc, tags) {
-  var time = new Date()
-  var newTags =[]
-  tags.map(function(item){
-    newTags.push({name: item})
-  })
-  var newPost = {
-    'authorID': owner,
-    'name': title,
-    'description': desc,
-    'tags': newTags,
-    'date': time
-  }
+export function createPost (post) {
+  post.date = Date.now()
+  return emulateServerReturnPromise(addDocument('post', post))
+}
 
-  newPost = addDocument('post', newPost)
+export function updatePost (post) {
+  return emulateServerReturnPromise(writeDocument('post', post)).then(() => post)
+}
+
+export async function getTags () {
+  const posts = await emulateServerReturnPromise(readCollection('post'))
+  const tags = new Set()
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      tags.add(tag)
+    }
+  }
+  return tags
 }

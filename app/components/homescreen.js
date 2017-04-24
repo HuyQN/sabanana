@@ -8,7 +8,7 @@ export default class HomeScreen extends React.Component {
     this.state = {
       data: []
     }
-    getAllPosts((data) => { this.setState({data: data}) })
+    getAllPosts().then((data) => { this.setState({data: data}) })
   }
 
   render () {

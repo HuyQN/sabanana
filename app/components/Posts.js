@@ -1,11 +1,13 @@
 import React from 'react'
-import {getUser} from '../server'
 import {unixTimeToString} from '../util'
 import {
   Link
 } from 'react-router-dom'
+import UserLink from './UserLink'
 
-function Tag ({name}) {
+import {post} from '../propTypes'
+
+function Tag (name) {
   return <a href='#' key={name}><em className='text-info'>{name}</em></a>
 }
 
@@ -17,26 +19,19 @@ function Tags ({tags}) {
   )
 }
 
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      author: ""
-    }
-    getUser(this.props.authorID).then((user) => {this.setState({author: user.name})})
-  }
-
-  render() {
-    var convertedTime = unixTimeToString(this.props.date)
-    return (
-      <li>
-        <Link to={`/post/${this.props._id}`}>{this.props.name} by {this.state.author}</Link>
-        <span className='text-muted'> at {convertedTime}</span>
-        <p>{this.props.description}</p>
-        <Tags tags={this.props.tags} />
-      </li>
-    )
-  }
+function Post ({post: {date, name, author, description, tags, _id}}) {
+  const convertedTime = unixTimeToString(date)
+  return (
+    <li>
+      <Link to={`/post/${_id}`}>{name}</Link> by <UserLink user={author} />
+      <span className='text-muted'> at {convertedTime}</span>
+      <p>{description}</p>
+      <Tags tags={tags} />
+    </li>
+  )
+}
+Post.propTypes = {
+  post: post
 }
 
 function PostHeader () {
@@ -55,15 +50,11 @@ export default function Posts ({posts, includeHeader}) {
       { includeHeader ? <PostHeader /> : null }
       <div className='panel-body'>
         <ul className='list-unstyled posts'>
-          {posts.map((post) => {
-             return(
-               <Post key={post._id}
-                     authorID={post.authorID}
-                     name={post.name}
-                     description={post.description}
-                     tags={post.tags}
-                     _id={post._id}
-                     date={post.date} />)})}
+          {posts.map(post => {
+            return (
+              <Post key={post._id}
+                post={post} />)
+          })}
         </ul>
       </div>
     </div>
