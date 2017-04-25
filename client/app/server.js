@@ -74,11 +74,8 @@ export async function getOrCreateThread (userIDs) {
 }
 
 export async function getAllPosts () {
-  const posts = await emulateServerReturnPromise(Object.values(readCollection('post')))
-  for (const post of posts) {
-    post.author = await getUser(post.authorID)
-  }
-  return posts
+  const response = await fetch('http://localhost:3000/posts/')
+  return response.json()
 }
 
 export async function getUsersPosts (userID) {

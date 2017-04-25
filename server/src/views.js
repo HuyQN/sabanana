@@ -1,13 +1,18 @@
-import {readDocument, writeDocument, addDocument, readCollection} from './database.js'
+var database = require('./database.js')
 
-export function getUser (userID) {
-  return readDocument('user', userID)
+function getUser (userID) {
+  return database.readDocument('user', userID)
 }
 
-export function getAllPosts () {
-  const posts = Object.values(readCollection('post'))
-  for (const post of posts) {
+function getAllPosts () {
+  var posts = Object.values(database.readCollection('post'))
+  for (var post of posts) {
     post.author = getUser(post.authorID)
   }
   return posts
+}
+
+module.exports = {
+  getUser: getUser,
+  getAllPosts: getAllPosts
 }
