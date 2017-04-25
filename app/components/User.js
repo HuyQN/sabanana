@@ -40,9 +40,9 @@ export default class User extends React.Component {
           </div>
         </div>
         <div className='row'>
-        	<div className='col-md-8'>
-        		<Posts posts={this.state.data} />
-        	</div>
+          <div className='col-md-8'>
+            <Posts posts={this.state.data} />
+          </div>
         </div>
       </div>
     )
