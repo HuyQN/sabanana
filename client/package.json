@@ -5,7 +5,7 @@
   "author": "John Vilk <jvilk@cs.umass.edu>",
   "license": "MIT",
   "scripts": {
-    "serve": "webpack-dev-server --content-base build",
+    "serve": "webpack-dev-server --content-base build  --history-api-fallback",
     "watch": "webpack --watch"
   },
   "devDependencies": {
