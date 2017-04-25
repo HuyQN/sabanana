@@ -54,7 +54,6 @@ class Tagbar extends React.Component {
                  </label>
                </li>
              )})}
-        <li><label type="button" className="btn btn-default" onClick={() => {resetDatabase(); window.alert("Reset DB"); document.location.reload(false);}}>Reset DB</label></li>
         </ul>
       </div>
     )
