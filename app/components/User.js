@@ -13,7 +13,7 @@ export default class User extends React.Component {
       user: null,
       data: []
     }
-    this.refreshUser(),
+    this.refreshUser()
     getUsersPosts(this.props.match.params.userID).then((data) => this.setState({data}))
   }
 
