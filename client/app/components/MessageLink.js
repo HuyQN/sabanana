@@ -11,10 +11,10 @@ export default function MessageLink ({user}, {router}) {
   // https://github.com/ReactTraining/react-router/blob/b82a39d7f44e8d43bb60cf126e8ffbb1e867347d/packages/react-router-dom/modules/Link.js
   function onClick (event) {
     event.preventDefault()
-    getOrCreateThread([user._id, currentUserID])
-        .then(({_id}) =>
+    getOrCreateThread(currentUserID, user._id)
+        .then(id =>
           router.history.push(
-            `/messages/${_id}`
+            `/messages/${id}`
           )
         )
   }

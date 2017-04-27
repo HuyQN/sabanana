@@ -3,6 +3,7 @@ import React from 'react'
 import {thread} from '../propTypes'
 import UserLink from './UserLink'
 import {sendMessage} from '../server'
+import {currentUserID} from '../const'
 
 function Message ({message: {author, content}}) {
   return (
@@ -38,11 +39,10 @@ class NewMessage extends React.Component {
   onSubmit (e) {
     e.preventDefault()
     sendMessage(
-      this.props.thread,
-      {
-        authorIndex: this.props.thread.currentUserIndex,
-        content: this.state.message
-      })
+      this.props.thread._id,
+      currentUserID,
+      this.state.message
+    )
     .then(this.props.onMessageSend)
     .then(() => this.setState({message: ''}))
   }
