@@ -80,6 +80,10 @@ app.get('/user/:userId', function (req, res) {
   }
 })
 
+app.get('/userPosts/:userID', function (req, res) {
+  res.send(views.getUsersPosts(req.params.userID));
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

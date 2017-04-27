@@ -63,17 +63,11 @@ export async function getAllPosts () {
   return response.json()
 }
 
-export async function getUsersPosts (userID) {
-  const AllPosts = readCollection('post')
-  const Posts = await emulateServerReturnPromise(
-      Object.values(AllPosts)
-      .filter(({authorID}) => authorID == userID)
-  )
-  for (const post of Posts) {
-    post.author = await getUser(post.authorID)
-  }
-  return Posts
+export async function getUsersPosts(userID) {
+  const response = await fetch(`http://localhost:3000/userPosts/${userID}`)
+  return response.json()
 }
+
 export async function getPost (id) {
   const response = await fetch(`http://localhost:3000/post/${id}`)
   return response.json()
