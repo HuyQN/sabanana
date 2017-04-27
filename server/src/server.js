@@ -40,6 +40,11 @@ app.get('/posts/', function (req, res) {
   res.send(views.getAllPosts());
 });
 
+app.get('/post/:id', function (req, res) {
+  var id = req.params.id;
+  res.send(views.getPost(id));
+});
+
 app.post('/post/', validate({body: postSchema}) , function(req,res){
   var body= req.body;
   var newPost = createPost(body.authorID, body.name, body.description, body.tags);

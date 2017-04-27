@@ -90,9 +90,8 @@ export async function getUsersPosts (userID) {
   return Posts
 }
 export async function getPost (id) {
-  const post = await emulateServerReturnPromise(readDocument('post', id))
-  post.author = await getUser(post.authorID)
-  return post
+  const response = await fetch(`http://localhost:3000/post/${id}`)
+  return response.json()
 }
 
 export function createPost (post) {

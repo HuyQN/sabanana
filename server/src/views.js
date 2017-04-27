@@ -12,7 +12,14 @@ function getAllPosts () {
   return posts
 }
 
+function getPost(id) {
+  var post = database.readDocument('post', id)
+  post.author = getUser(post.authorID)
+  return post
+}
+
 module.exports = {
   getUser: getUser,
-  getAllPosts: getAllPosts
+  getAllPosts: getAllPosts,
+  getPost: getPost
 }
