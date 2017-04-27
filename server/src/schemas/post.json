@@ -1,0 +1,28 @@
+{
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "definitions": {},
+        "id": "http://example.com/example.json",
+        "properties": {
+            "authorID": {
+                "id": "/properties/authorID",
+                "type": "integer"
+            },
+            "description": {
+                "id": "/properties/description",
+                "type": "string"
+            },
+            "name": {
+                "id": "/properties/name",
+                "type": "string"
+            },
+            "tags": {
+                "id": "/properties/tags",
+                "items": {
+                    "id": "/properties/tags/items",
+                    "type": "string"
+                },
+                "type": "array"
+            }
+        },
+        "type": "object"
+    }
