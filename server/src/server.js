@@ -52,6 +52,16 @@ app.post('/post/', validate({body: postSchema}) , function(req,res){
   res.send(newPost);
 });
 
+app.get('/user/:userId', function(req,res){
+  var userid = req.params.userId;
+  var userdata = readDocument('user', userid);
+  if(userdata == null){
+    res.status(500).end()
+  } else {
+    res.send(userdata);
+  }
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });

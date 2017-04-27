@@ -14,10 +14,10 @@ function emulateServerReturnPromise (data) {
   return new Promise((resolve, reject) => emulateServerReturn(data, resolve))
 }
 
-export function getUser (userID) {
-  return emulateServerReturnPromise(
-    readDocument('user', userID)
-  )
+export function getUser (userID, cb) {
+  sendXHR('GET', '/user/'+userID,undefined, (xhr) => {
+    cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export async function getThreads (userID) {
@@ -94,9 +94,14 @@ export async function getPost (id) {
   return response.json()
 }
 
-export function createPost (post) {
-  post.date = Date.now()
-  return emulateServerReturnPromise(addDocument('post', post))
+export function createPost (post,cb) {
+  sendXHR('POST','/post/', {
+    "authorID": post.authorID,
+    "name": post.name,
+    "description": post.description,
+    "tags": post.tags
+  }, (xhr) =>{ cb(JSon.parse(xhr.responseText))
+    })
 }
 
 export function updatePost (post) {
