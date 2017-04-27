@@ -27,7 +27,7 @@ function App () {
 
         <Route exact path='/' component={HomeScreen} />
         <Route path='/user/:userID' component={User} />
-        <Route path='/messages/:threadID' component={Messages} />
+        <Route path='/messages/:threadID?' component={Messages} />
         <Route path='/add/' component={AddPost} />
         <Route path='/settings/' component={UserSettings} />
         <Route path='/edit/:postID' component={EditPost} />
