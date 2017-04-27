@@ -5,10 +5,11 @@ function getUser (userID) {
 }
 
 function getAllPosts () {
-  var posts = Object.values(database.readCollection('post'))
-  for (var post of posts) {
+  var posts = database.readCollection('post')
+  Object.keys(posts).map(function (key) {
+    var post = posts[key]
     post.author = getUser(post.authorID)
-  }
+  })
   return posts
 }
 
