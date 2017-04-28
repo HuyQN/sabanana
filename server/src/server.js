@@ -84,6 +84,25 @@ app.get('/userPosts/:userID', function (req, res) {
   res.send(views.getUsersPosts(req.params.userID));
 });
 
+app.put('/post/:id', function(req, res)){
+  var id = req.params.id;
+  var fromUser = getUsersPosts(req.get('Authorization'));
+  var postItem = readDocument('post', id);
+  if(fromUser === postItem.contents.author){
+    if(typeof(req.body) !== 'string'){
+      res.status(400).end();
+      return;
+    }
+    //Update text content of post
+    postItem.contents.contents = req.body;
+    writeDocument('post', post));
+    res.send(getUsersPosts(id));
+  }
+  else{
+    res.status(401).end();
+  }
+}
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })

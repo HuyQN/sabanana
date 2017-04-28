@@ -85,7 +85,9 @@ export function createPost (post, cb) {
 }
 
 export function updatePost (post) {
-  return emulateServerReturnPromise(writeDocument('post', post)).then(() => post)
+  sendXHR('PUT', '/post/' + post, (xhr) =>
+  {cb(JSON.parse(xhr.responseText));
+  });
 }
 
 export async function getTags () {
