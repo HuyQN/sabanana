@@ -78,6 +78,6 @@ module.exports = {
   getPost: getPost,
   getThreads: getThreads,
   sendMessage: sendMessage,
-  getOrCreateThread: getOrCreateThread
+  getOrCreateThread: getOrCreateThread,
   getUsersPosts: getUsersPosts
 }
