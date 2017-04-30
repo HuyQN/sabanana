@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component {
       tags: []
     }
     getAllPosts().then((data) => { this.setState({data: data}) })
-    getTags().then((data) => {this.setState({tags: data}) })
+    getTags().then((data) => {this.setState({tags: [...data]}) })
   }
 
   render () {

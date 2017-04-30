@@ -80,7 +80,7 @@ function getTags () {
       set.add(tag)
     }
   }
-  return [...set]
+  return set
 }
 
 module.exports = {
