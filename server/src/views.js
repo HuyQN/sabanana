@@ -72,6 +72,17 @@ function getUsersPosts (userID) {
   return Posts
 }
 
+function getTags () {
+  posts = getAllPosts()
+  var set = new Set()
+  for (const post of Object.values(posts)) {
+    for (const tag of post.tags) {
+      set.add(tag)
+    }
+  }
+  return [...set]
+}
+
 module.exports = {
   getUser: getUser,
   getAllPosts: getAllPosts,
@@ -79,5 +90,6 @@ module.exports = {
   getThreads: getThreads,
   sendMessage: sendMessage,
   getOrCreateThread: getOrCreateThread,
-  getUsersPosts: getUsersPosts
+  getUsersPosts: getUsersPosts,
+  getTags: getTags
 }

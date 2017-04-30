@@ -91,14 +91,8 @@ export function updatePost (post) {
 }
 
 export async function getTags () {
-  const posts = await emulateServerReturnPromise(readCollection('post'))
-  const tags = new Set()
-  for (const post of posts) {
-    for (const tag of post.tags) {
-      tags.add(tag)
-    }
-  }
-  return tags
+  const response = await fetch(`http://localhost:3000/tags/`)
+  return response.json()
 }
 
 var token = '' // <-- Put your base64'd JSON token here
