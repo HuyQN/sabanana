@@ -1,14 +1,16 @@
 import React from 'react'
 import Posts from './Posts.js'
-import {getAllPosts} from '../server'
+import {getAllPosts, getTags} from '../server'
 
 export default class HomeScreen extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      tags: []
     }
     getAllPosts().then((data) => { this.setState({data: data}) })
+    getTags().then((data) => {this.setState({tags: data}) })
   }
 
   render () {
@@ -19,15 +21,12 @@ export default class HomeScreen extends React.Component {
 
             <div className='col-md-2'>
               <span className='bold'>TAGS</span>
-              <li role='presentation'>board games</li>
-              <li role='presentation'>sports</li>
-              <li role='presentation'>music</li>
-              <li role='presentation'>computers</li>
-              <li role='presentation'>clothes</li>
-              <li role='presentation'>language</li>
-              <li role='presentation'>Date</li>
+              {this.state.tags.map(function(tag){
+                return(
+                  <li role='presentation'>{tag}</li>
+                )
+              })}
               <p>_/_/_</p>
-              <li role='presentation'>Misc</li>
             </div>
 
             <div className='col-md-7'>
