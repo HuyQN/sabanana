@@ -20,8 +20,10 @@ var allowCrossDomain = function (req, res, next) {
   next()
 }
 
+app.use(bodyParser.text());
 app.use(bodyParser.json())
 app.use(allowCrossDomain)
+app.use(express.static('../client/build'));
 
 function createPost (author, name, description, tags) {
   var date = new Date().getTime()
