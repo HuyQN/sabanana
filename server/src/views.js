@@ -64,7 +64,6 @@ function sendMessage (threadID, userID, message) {
 }
 
 function getUsersPosts (userID) {
-  console.log(userID)
   const AllPosts = getAllPosts()
   const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
   for (const post of Posts) {
