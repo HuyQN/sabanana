@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom' 
 
 export default class UserSettings extends React.Component {
 
@@ -66,7 +67,9 @@ export default class UserSettings extends React.Component {
               </label>
               <br />
               <br />
-              <a href='http://localhost:3000/add/'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Add Post</strong></font></a>
+              <Link to = '/add/'>
+              <a ><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Add Post</strong></font></a>
+              </Link>
               <br />
               <br />
               <br />
