@@ -103,5 +103,5 @@ app.listen(3000, function () {
 })
 
 app.get('/tags/', function (req, res) {
-  res.send(views.getTags())
+  views.getTags().then(tags => res.send(tags))
 })

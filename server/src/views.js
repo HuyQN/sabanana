@@ -97,14 +97,17 @@ function getUsersPosts (userID) {
 }
 
 function getTags () {
-  posts = getAllPosts()
-  var set = new Set()
-  for (const post of Object.values(posts)) {
-    for (const tag of post.tags) {
-      set.add(tag)
+  return getDB().then(
+    db => db.collection('post').find({}).toArray()
+  ).then(function(posts){
+    var set = new Set()
+    for (const post of Object.values(posts)) {
+      for (const tag of post.tags) {
+        set.add(tag)
+      }
     }
-  }
-  return set
+    return set
+  })
 }
 
 module.exports = {
