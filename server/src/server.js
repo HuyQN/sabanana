@@ -39,7 +39,8 @@ function createPost (author, name, description, tags) {
 };
 
 app.get('/posts/', function (req, res) {
-  res.send(views.getAllPosts())
+  views.getAllPosts().then(a => console.log(a))
+  views.getAllPosts().then(a => res.send(a))
 })
 
 app.get('/post/:id', function (req, res) {
