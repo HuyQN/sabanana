@@ -37,6 +37,7 @@ function getThreads (userID) {
 }
 
 function getOrCreateThread (userID, otherUserID) {
+  "use strict";
   const allThreads = database.readCollection('thread')
   let thread = Object.values(allThreads)
       .find(thread => thread.userIDs.indexOf(userID) !== -1 && thread.userIDs.indexOf(otherUserID) !== -1)
@@ -63,7 +64,6 @@ function sendMessage (threadID, userID, message) {
 }
 
 function getUsersPosts (userID) {
-  console.log(userID)
   const AllPosts = getAllPosts()
   const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
   for (const post of Posts) {

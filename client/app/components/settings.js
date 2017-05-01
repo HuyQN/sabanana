@@ -66,7 +66,7 @@ export default class UserSettings extends React.Component {
               </label>
               <br />
               <br />
-              <a href='http://localhost:8080/add/'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Add Post</strong></font></a>
+              <a href='http://localhost:3000/add/'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Add Post</strong></font></a>
               <br />
               <br />
               <br />

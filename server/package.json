@@ -12,7 +12,9 @@
     "babel-polyfill": "6.23.0",
     "body-parser": "1.17.1",
     "express": "4.15.2",
-    "express-jsonschema": "^1.1.0"
+    "express-jsonschema": "^1.1.0",
+    "mongo-express": "^0.39.2",
+    "mongodb": "^2.2.26"
   },
   "devDependencies": {
     "standard": "10.0.2"
