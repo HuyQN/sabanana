@@ -4,7 +4,7 @@ import PostForm from './PostForm'
 import {currentUserID} from '../const'
 import {createPost} from '../server'
 
-export default function AddPost (props, {router}) {
+export default function AddPost () {
   function onSubmit (post) {
     post.authorID = currentUserID
     return createPost(post)
