@@ -35,7 +35,7 @@ export default class UserSettings extends React.Component {
   }
 
   handleBioChange(event){
-    event.prevent();
+    event.preventDefault();
     this.setState({value: event.target.value});
   }
 
@@ -73,7 +73,9 @@ export default class UserSettings extends React.Component {
               <br />
               <br />
               <br />
-              <a href='#'><span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Edit / Delete Posts</strong></font></a>
+              <Link to = '/edit/:postID'>
+              <span className='glyphicon glyphicon-pencil' /><font size='+1'><strong> Edit / Delete Posts</strong></font>
+              </Link>
               <br />
               <br />
             </div>
