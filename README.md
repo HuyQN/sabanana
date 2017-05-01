@@ -10,5 +10,5 @@ cd client
 npm install
 npm run serve
 
-# now open http://localhost:8080/
+# now open http://localhost:3000/
 ```
