@@ -1,15 +1,39 @@
 var database = require('./database.js')
+var MongoClient = require('mongodb').MongoClient
+
+const url = 'mongodb://localhost:27017/sabanana'
+
+function getDB () {
+  return MongoClient.connect(url)
+}
 
 function getUser (userID) {
-  return database.readDocument('user', userID)
+  return getDB().then(
+    db => db.collection('user').find({_id: userID}).toArray()
+  ).then(users => users[0])
 }
 
 function getAllPosts () {
-  var posts = Object.values(database.readCollection('post'))
-  for (var post of posts) {
-    post.author = getUser(post.authorID)
-  }
-  return posts
+  return getDB().then(
+    db => db.collection('post').find({}).toArray()
+  ).then(
+    posts => (
+      Promise.all(
+        posts
+        .map(post => post.authorID)
+        .map(getUser)
+      ).then(
+        authors => (
+          authors.map(
+            (author, index) => {
+              posts[index].author = author
+              return posts[index]
+            }
+          )
+        )
+      )
+    )
+  )
 }
 
 function getPost (id) {
@@ -17,7 +41,6 @@ function getPost (id) {
   post.author = getUser(post.authorID)
   return post
 }
-
 
 // fills up a thread object with info about both the users
 function fillThread (thread, userID) {
@@ -37,7 +60,7 @@ function getThreads (userID) {
 }
 
 function getOrCreateThread (userID, otherUserID) {
-  "use strict";
+  'use strict'
   const allThreads = database.readCollection('thread')
   let thread = Object.values(allThreads)
       .find(thread => thread.userIDs.indexOf(userID) !== -1 && thread.userIDs.indexOf(otherUserID) !== -1)
