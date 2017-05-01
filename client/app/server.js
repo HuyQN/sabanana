@@ -63,7 +63,7 @@ export async function getAllPosts () {
   return response.json()
 }
 
-export async function getUsersPosts(userID) {
+export async function getUsersPosts (userID) {
   const response = await fetch(`http://localhost:3000/userPosts/${userID}`)
   return response.json()
 }
@@ -84,10 +84,10 @@ export function createPost (post, cb) {
   })
 }
 
-export function updatePost (post) {
-  sendXHR('PUT', '/post/' + post, (xhr) =>
-  {cb(JSON.parse(xhr.responseText));
-  });
+export function updatePost (post, cb) {
+  sendXHR('PUT', '/post/' + post._id, post, (xhr) => {
+    cb(JSon.parse(xhr.responseText))
+  })
 }
 
 export async function getTags () {
@@ -124,7 +124,7 @@ function sendXHR (verb, resource, body, cb) {
       // the error.
       var responseText = xhr.responseText
       FacebookError('Could not ' + verb + ' ' + resource + ': Received ' +
-		            statusCode + ' ' + statusText + ': ' + responseText)
+                statusCode + ' ' + statusText + ': ' + responseText)
     }
   })
 
@@ -135,13 +135,13 @@ function sendXHR (verb, resource, body, cb) {
   // Network failure: Could not connect to server.
   xhr.addEventListener('error', function () {
     FacebookError('Could not ' + verb + ' ' + resource +
-	              ': Could not connect to the server.')
+                ': Could not connect to the server.')
   })
 
   // Network failure: request took too long to complete.
   xhr.addEventListener('timeout', function () {
     FacebookError('Could not ' + verb + ' ' + resource +
-		          ': Request timed out.')
+              ': Request timed out.')
   })
 
   switch (typeof (body)) {

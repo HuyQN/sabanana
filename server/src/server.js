@@ -20,10 +20,10 @@ var allowCrossDomain = function (req, res, next) {
   next()
 }
 
-app.use(bodyParser.text());
+app.use(bodyParser.text())
 app.use(bodyParser.json())
 app.use(allowCrossDomain)
-app.use(express.static('../client/build'));
+app.use(express.static('../client/build'))
 
 function createPost (author, name, description, tags) {
   var date = new Date().getTime()
@@ -83,27 +83,19 @@ app.get('/user/:userId', function (req, res) {
 })
 
 app.get('/userPosts/:userID', function (req, res) {
-  res.send(views.getUsersPosts(req.params.userID));
-});
+  res.send(views.getUsersPosts(req.params.userID))
+})
 
-app.put('/post/:id', function (req, res){
-  var id = req.params.id;
-  var fromUser = getUsersPosts(req.get('Authorization'));
-  var postItem = readDocument('post', id);
-  if(fromUser === postItem.contents.author){
-    if(typeof(req.body) !== 'string'){
-      res.status(400).end();
-      return;
-    }
-    //Update text content of post
-    postItem.contents.contents = req.body;
-    writeDocument('post', post);
-    res.send(getUsersPosts(id));
-  }
-  else{
-    res.status(401).end();
-  }
-});
+app.put('/post/:id', function (req, res) {
+  var id = req.params.id
+  var postItem = readDocument('post', id)
+    // Update text content of post
+  var newpost = req.body
+  newpost.date = postItem.date
+  newpost._id = postItem._id
+  writeDocument('post', newpost)
+  res.send(readDocument('post', id))
+})
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
@@ -111,4 +103,4 @@ app.listen(3000, function () {
 
 app.get('/tags/', function (req, res) {
   res.send(views.getTags())
-});
+})
