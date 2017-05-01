@@ -38,9 +38,16 @@ function getAllPosts () {
 }
 
 function getPost (id) {
-  var post = database.readDocument('post', id)
-  post.author = getUser(post.authorID)
-  return post
+  return getDB().then(
+      db => db.collection('post').find({_id: id}).toArray()
+    ).then(posts => {
+      const post = posts[0]
+      return getUser(post.authorID).then(user => {
+        post.author = user
+        return post
+      })
+    }
+    )
 }
 
 // fills up a thread object with info about both the users
@@ -99,7 +106,7 @@ function getUsersPosts (userID) {
 function getTags () {
   return getDB().then(
     db => db.collection('post').find({}).toArray()
-  ).then(function(posts){
+  ).then(function (posts) {
     var set = new Set()
     for (const post of Object.values(posts)) {
       for (const tag of post.tags) {

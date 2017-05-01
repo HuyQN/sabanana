@@ -45,7 +45,7 @@ app.get('/posts/', function (req, res) {
 
 app.get('/post/:id', function (req, res) {
   var id = req.params.id
-  res.send(views.getPost(id))
+  views.getPost(id).then(post => res.send(post))
 })
 
 app.post('/post/', validate({body: postSchema}), function (req, res) {
