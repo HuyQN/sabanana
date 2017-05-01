@@ -17,6 +17,7 @@ function getAllPosts () {
   return getDB().then(
     db => db.collection('post').find({}).toArray()
   ).then(
+    // add `author` to all  posts, by getting the `authorID` from the database
     posts => (
       Promise.all(
         posts
