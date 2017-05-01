@@ -1,4 +1,5 @@
 import React from 'react'
+import {currentUserID} from '../const'
 import {getPost, updatePost} from '../server.js'
 import PostForm from './PostForm'
 
@@ -9,6 +10,12 @@ export default class EditPost extends React.Component {
     this.state = {
       post: null
     }
+  }
+
+  onSubmit(post){
+    post._id = this.props.match.params.postId
+    post.authorID = currentUserID
+    updatePost(post)
   }
 
   render () {
