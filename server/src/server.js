@@ -39,7 +39,7 @@ MongoClient.connect(url, function(err, db){
     var body = req.body
     var date = new Date().getTime()
     var newPost = {
-      'authorID': new ObjectID(body.authorID),
+      'authorID': body.authorID,
       'name': body.name,
       'description': body.description,
       'tags': body.tags,
@@ -66,7 +66,7 @@ MongoClient.connect(url, function(err, db){
   // update post
   app.put('/post/:id', function (req, res) {
     var body = req.body
-    var postid = new ObjectID(req.params.id);
+    var postid = req.params.id;
     db.collection('post').findOne({ _id: postid}, function(err, object){
       console.log(object)
     })
@@ -97,7 +97,7 @@ app.get('/posts/', function (req, res) {
 })
 
 app.get('/post/:id', function (req, res) {
-  var id = new ObjectID(req.params.id)
+  var id = req.params.id
   views.getPost(id).then(post => res.send(post))
 })
 
@@ -122,8 +122,17 @@ app.put('/user/:userID/messages/:threadID', function (req, res) {
 
 app.get('/user/:userId', function (req, res) {
   var userid = req.params.userId
-  views.getUser(userid).then(user => res.send(user))
-})
+  var fromUser = getUserIdFromToken(req.get('Authorization'));
+  // userid is a string. We need it to be a number.
+  // Parameters are always strings.
+  var useridNumber = parseInt(userid, 10);
+  if (fromUser === useridNumber){
+  views.getUser(userid).then(user => res.send(user));
+} else {
+  //401: Unauthorized request
+  res.status(401).end();
+}
+});
 
 app.get('/userPosts/:userID', function (req, res) {
   res.send(views.getUsersPosts(req.params.userID))
@@ -132,6 +141,8 @@ app.get('/userPosts/:userID', function (req, res) {
 app.get('/tags/', function (req, res) {
   views.getTags().then(tags => res.send(tags))
 })
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
