@@ -79,7 +79,7 @@ app.put('/user/:userID/messages/:threadID', function (req, res) {
   var userID = req.params.userID
   var threadID = req.params.threadID
   var message = req.body.message
-  res.send(views.sendMessage(threadID, userID, message))
+  views.sendMessage(threadID, userID, message).then(r => res.send(r))
 })
 
 app.get('/user/:userId', function (req, res) {
