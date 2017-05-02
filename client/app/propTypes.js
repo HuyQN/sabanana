@@ -16,7 +16,7 @@ export const thread = PropTypes.shape({
   _id: PropTypes.string.isRequired,
   currentUserIndex: PropTypes.number.isRequired,
   userIDs: PropTypes.arrayOf(
-    PropTypes.number.isRequired
+    PropTypes.string.isRequired
   ).isRequired,
   users: PropTypes.arrayOf(
     user.isRequired
@@ -28,7 +28,7 @@ export const thread = PropTypes.shape({
 
 export const post = PropTypes.shape({
   _id: PropTypes.string.isRequired,
-  authorID: PropTypes.number.isRequired,
+  authorID: PropTypes.string.isRequired,
   author: user.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

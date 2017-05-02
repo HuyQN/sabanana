@@ -53,22 +53,26 @@ function getPost (id) {
 // fills up a thread object with info about both the users
 function fillThread (thread, userID) {
   thread.currentUserIndex = thread.userIDs.indexOf(userID)
-  thread.users = thread.userIDs.map(getUser)
-  for (const message of thread.messages) {
-    message.author = thread.users[message.authorIndex]
-  }
-  return thread
+  return Promise.all(thread.userIDs.map(getUser)).then(
+    users => {
+      thread.users = users
+      for (const message of thread.messages) {
+        message.author = thread.users[message.authorIndex]
+      }
+      return thread
+    }
+  )
 }
 
 function getThreads (userID) {
-  const allThreads = database.readCollection('thread')
-  return Object.values(allThreads)
-      .filter(thread => thread.userIDs.indexOf(userID) !== -1)
-      .map(thread => fillThread(thread, userID))
+  return getDB().then(
+    db => db.collection('thread').find({userIDs: userID}).toArray()
+  ).then(
+    threads => Promise.all(threads.map(thread => fillThread(thread, userID)))
+  )
 }
 
 function getOrCreateThread (userID, otherUserID) {
-  'use strict'
   const allThreads = database.readCollection('thread')
   let thread = Object.values(allThreads)
       .find(thread => thread.userIDs.indexOf(userID) !== -1 && thread.userIDs.indexOf(otherUserID) !== -1)
