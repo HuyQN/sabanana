@@ -75,12 +75,7 @@ app.put('/user/:userID/messages/:threadID', function (req, res) {
 
 app.get('/user/:userId', function (req, res) {
   var userid = req.params.userId
-  var userdata = readDocument('user', userid)
-  if (userdata == null) {
-    res.status(500).end()
-  } else {
-    res.send(userdata)
-  }
+  views.getUser(userid).then(user => res.send(user))
 })
 
 app.get('/userPosts/:userID', function (req, res) {
