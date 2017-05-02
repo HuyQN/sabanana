@@ -17,6 +17,7 @@ function getUser (userID) {
   ).then(users => users[0])
 }
 
+
 function getAllPosts () {
   return getDB().then(
     db => db.collection('post').find({}).toArray()
@@ -39,6 +40,18 @@ function getAllPosts () {
       )
     )
   )
+}
+function getUsersPosts (userID) {
+  return getDB().then(
+    db => db.collection('post').find({}).toArray()
+  ).then(posts => {
+  const AllPosts = getAllPosts()
+  const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
+  for (const post of Posts) {
+    post.author = getUser(post.authorID)
+  }
+  return Posts
+})
 }
 
 function getPost (id) {
@@ -106,14 +119,6 @@ function sendMessage (threadID, userID, message) {
   database.writeDocument('thread', thread)
 }
 
-function getUsersPosts (userID) {
-  const AllPosts = getAllPosts()
-  const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
-  for (const post of Posts) {
-    post.author = getUser(post.authorID)
-  }
-  return Posts
-}
 
 function getTags () {
   return getDB().then(
