@@ -1,7 +1,7 @@
 import {PropTypes} from 'react'
 
 export const user = PropTypes.shape({
-  _id: PropTypes.number.isRequired,
+  _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   bio: PropTypes.string
 })
@@ -13,10 +13,10 @@ export const message = PropTypes.shape({
 })
 
 export const thread = PropTypes.shape({
-  _id: PropTypes.number.isRequired,
+  _id: PropTypes.string.isRequired,
   currentUserIndex: PropTypes.number.isRequired,
   userIDs: PropTypes.arrayOf(
-    PropTypes.number.isRequired
+    PropTypes.string.isRequired
   ).isRequired,
   users: PropTypes.arrayOf(
     user.isRequired
@@ -27,8 +27,8 @@ export const thread = PropTypes.shape({
 })
 
 export const post = PropTypes.shape({
-  _id: PropTypes.number.isRequired,
-  authorID: PropTypes.number.isRequired,
+  _id: PropTypes.string.isRequired,
+  authorID: PropTypes.string.isRequired,
   author: user.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

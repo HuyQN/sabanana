@@ -52,5 +52,5 @@ ThreadList.propTypes = {
   threads: React.PropTypes.arrayOf(
     thread.isRequired
   ).isRequired,
-  selectedThreadID: React.PropTypes.number
+  selectedThreadID: React.PropTypes.string
 }

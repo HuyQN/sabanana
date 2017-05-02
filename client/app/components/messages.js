@@ -10,7 +10,7 @@ export default class Messages extends React.Component {
     super(props)
     this.state = {
       threads: null,
-      selectedThreadID: parseInt(this.props.match.params.threadID)
+      selectedThreadID: this.props.match.params.threadID
     }
     this.refreshThreads()
   }
@@ -22,7 +22,7 @@ export default class Messages extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState({selectedThreadID: parseInt(this.props.match.params.threadID)})
+    this.setState({selectedThreadID: this.props.match.params.threadID})
   }
 
   render () {

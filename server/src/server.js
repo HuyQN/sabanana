@@ -45,7 +45,7 @@ app.get('/posts/', function (req, res) {
 
 app.get('/post/:id', function (req, res) {
   var id = req.params.id
-  res.send(views.getPost(id))
+  views.getPost(id).then(post => res.send(post))
 })
 
 app.post('/post/', validate({body: postSchema}), function (req, res) {
@@ -56,31 +56,26 @@ app.post('/post/', validate({body: postSchema}), function (req, res) {
 })
 
 app.get('/user/:id/messages/', function (req, res) {
-  var id = parseInt(req.params.id)
-  res.send(views.getThreads(id))
+  var id = req.params.id
+  views.getThreads(id).then(threads => res.send(threads))
 })
 
 app.post('/user/:userID/messages/', function (req, res) {
-  var userID = parseInt(req.params.userID)
+  var userID = req.params.userID
   var otherUserID = req.body.otherUserID
   res.send({id: views.getOrCreateThread(userID, otherUserID)})
 })
 
 app.put('/user/:userID/messages/:threadID', function (req, res) {
-  var userID = parseInt(req.params.userID)
-  var threadID = parseInt(req.params.threadID)
+  var userID = req.params.userID
+  var threadID = req.params.threadID
   var message = req.body.message
   res.send(views.sendMessage(threadID, userID, message))
 })
 
 app.get('/user/:userId', function (req, res) {
   var userid = req.params.userId
-  var userdata = readDocument('user', userid)
-  if (userdata == null) {
-    res.status(500).end()
-  } else {
-    res.send(userdata)
-  }
+  views.getUser(userid).then(user => res.send(user))
 })
 
 app.get('/userPosts/:userID', function (req, res) {
