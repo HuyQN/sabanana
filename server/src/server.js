@@ -11,6 +11,12 @@ var validate = require('express-jsonschema').validate
 var views = require('./views')
 
 var app = express()
+var mongo_express = require('mongo-express/lib/middleware')
+var mongo_express_config = require('mongo-express/config.default.js')
+var MongoDB = require('mongodb')
+var MongoClient = MongoDB.MongoClient
+var ObjectID = MongoDB.ObjectID
+var url = 'mongodb://localhost:27017/sabanana'
 
 // http://stackoverflow.com/a/7069902/907060
 var allowCrossDomain = function (req, res, next) {
@@ -19,6 +25,10 @@ var allowCrossDomain = function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type')
   next()
 }
+
+MongoClient.connect(url, function(err, db){
+  app.use('/mongo_express', mongo_express(mongo_express_config))
+})
 
 app.use(bodyParser.text())
 app.use(bodyParser.json())

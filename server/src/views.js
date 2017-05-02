@@ -1,5 +1,9 @@
 var database = require('./database.js')
-var MongoClient = require('mongodb').MongoClient
+var mongo_express = require('mongo-express/lib/middleware')
+var mongo_express_config = require('mongo-express/config.default.js')
+var MongoDB = require('mongodb')
+var MongoClient = MongoDB.MongoClient
+var ObjectID = MongoDB.ObjectID
 
 const url = 'mongodb://localhost:27017/sabanana'
 
