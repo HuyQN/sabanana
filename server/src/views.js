@@ -43,15 +43,26 @@ function getAllPosts () {
 }
 function getUsersPosts (userID) {
   return getDB().then(
-    db => db.collection('post').find({}).toArray()
-  ).then(posts => {
-  const AllPosts = getAllPosts()
-  const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
-  for (const post of Posts) {
-    post.author = getUser(post.authorID)
-  }
-  return Posts
-})
+    db => db.collection('post').find({ authorID: new ObjectID(userID)}).toArray()
+  ).then(
+    // add `author` to all  posts, by getting the `authorID` from the database
+    posts => (
+      Promise.all(
+        posts
+        .map(post => post.authorID)
+        .map(getUser)
+      ).then(
+        authors => (
+          authors.map(
+            (author, index) => {
+              posts[index].author = author
+              return posts[index]
+            }
+          )
+        )
+      )
+    )
+  )
 }
 
 function getPost (id) {

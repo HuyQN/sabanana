@@ -121,12 +121,12 @@ app.put('/user/:userID/messages/:threadID', function (req, res) {
 })
 
 app.get('/user/:userId', function (req, res) {
-  var userid = req.params.userId
+  var userid = new ObjectID(req.params.userId)
   views.getUser(userid).then(user => res.send(user))
 })
 
 app.get('/userPosts/:userID', function (req, res) {
-  res.send(views.getUsersPosts(req.params.userID))
+  views.getUsersPosts(req.params.userID).then(posts => res.send(posts))
 })
 
 app.get('/tags/', function (req, res) {
