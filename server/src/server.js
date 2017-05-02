@@ -39,7 +39,7 @@ MongoClient.connect(url, function(err, db){
     var body = req.body
     var date = new Date().getTime()
     var newPost = {
-      'authorID': body.authorID,
+      'authorID': new ObjectID(body.authorID),
       'name': body.name,
       'description': body.description,
       'tags': body.tags,
@@ -66,7 +66,7 @@ MongoClient.connect(url, function(err, db){
   // update post
   app.put('/post/:id', function (req, res) {
     var body = req.body
-    var postid = req.params.id;
+    var postid = new ObjectID(req.params.id);
     db.collection('post').findOne({ _id: postid}, function(err, object){
       console.log(object)
     })
@@ -97,7 +97,7 @@ app.get('/posts/', function (req, res) {
 })
 
 app.get('/post/:id', function (req, res) {
-  var id = req.params.id
+  var id = new ObjectID(req.params.id)
   views.getPost(id).then(post => res.send(post))
 })
 
