@@ -27,26 +27,70 @@ var allowCrossDomain = function (req, res, next) {
 }
 
 MongoClient.connect(url, function(err, db){
+  app.use(bodyParser.text())
+  app.use(bodyParser.json())
+  app.use(allowCrossDomain)
+  app.use(express.static('../client/build'))
+
   app.use('/mongo_express', mongo_express(mongo_express_config))
+
+  // create post
+  app.post('/post/', validate({body: postSchema}), function (req, res) {
+    var body = req.body
+    var date = new Date().getTime()
+    var newPost = {
+      'authorID': body.authorID,
+      'name': body.name,
+      'description': body.description,
+      'tags': body.tags,
+      'date': date
+    }
+    // insert the object into the database
+    db.collection('post').insertOne(newPost, function(err, result){
+      if(err){
+        return res.status(500).send("A database error occurred: " + err);
+      }
+      // find the new object created
+      db.collection('post').findOne({ _id: result.insertedId}, function(err, object){
+        if(err){
+          return res.status(500).send("A database error occurred: " + err);
+        }
+        res.status(201)
+        //returns the object
+        res.send(object)
+      })
+    })
+  })
+  // end of create post
+
+  // update post
+  app.put('/post/:id', function (req, res) {
+    var body = req.body
+    var postid = req.params.id;
+    db.collection('post').findOne({ _id: postid}, function(err, object){
+      console.log(object)
+    })
+    db.collection('post').updateOne({ _id: postid}, {
+      $set: {
+        name: body.name,
+        description: body.description,
+        tags: body.tags
+      }
+    }, function(err, result){
+      if(err){
+        return res.status(500).send("A database error occurred: " + err);
+      }
+      db.collection('post').findOne({ _id: postid}, function(err, object){
+        if(err){
+          return res.status(500).send("A database error occurred: " + err);
+        }
+        res.status(201)
+        res.send(object)
+      })
+    })
+  })
+  // end of update post
 })
-
-app.use(bodyParser.text())
-app.use(bodyParser.json())
-app.use(allowCrossDomain)
-app.use(express.static('../client/build'))
-
-function createPost (author, name, description, tags) {
-  var date = new Date().getTime()
-  var newPost = {
-    'authorID': author,
-    'name': name,
-    'description': description,
-    'tags': tags,
-    'date': date
-  }
-  newPost = addDocument('post', newPost)
-  return newPost
-};
 
 app.get('/posts/', function (req, res) {
   views.getAllPosts().then(a => res.send(a))
@@ -57,12 +101,6 @@ app.get('/post/:id', function (req, res) {
   views.getPost(id).then(post => res.send(post))
 })
 
-app.post('/post/', validate({body: postSchema}), function (req, res) {
-  var body = req.body
-  var newPost = createPost(body.authorID, body.name, body.description, body.tags)
-  res.status(201)
-  res.send(newPost)
-})
 
 app.get('/user/:id/messages/', function (req, res) {
   var id = req.params.id
@@ -89,17 +127,6 @@ app.get('/user/:userId', function (req, res) {
 
 app.get('/userPosts/:userID', function (req, res) {
   res.send(views.getUsersPosts(req.params.userID))
-})
-
-app.put('/post/:id', function (req, res) {
-  var id = req.params.id
-  var postItem = readDocument('post', id)
-    // Update text content of post
-  var newpost = req.body
-  newpost.date = postItem.date
-  newpost._id = postItem._id
-  writeDocument('post', newpost)
-  res.send(readDocument('post', id))
 })
 
 app.listen(3000, function () {
