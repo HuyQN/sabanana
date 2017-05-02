@@ -97,13 +97,28 @@ function getOrCreateThread (userID, otherUserID) {
 }
 
 function sendMessage (threadID, userID, message) {
-  const thread = database.readDocument('thread', threadID)
-  const authorIndex = thread.userIDs.indexOf(userID)
-  thread.messages.push({
-    authorIndex: authorIndex,
-    content: message
-  })
-  database.writeDocument('thread', thread)
+  return getDB().then(
+    db => db.collection('thread').find({_id: threadID}).toArray()
+  ).then(
+    threads => {
+      console.log(threads)
+      const thread = threads[0]
+      const authorIndex = thread.userIDs.indexOf(userID)
+      return getDB().then(
+        db => db.collection('thread').update(
+          {_id: threadID},
+          {
+            $push: {
+              messages: {
+                authorIndex: authorIndex,
+                content: message
+              }
+            }
+          }
+        )
+      )
+    }
+  )
 }
 
 function getUsersPosts (userID) {
