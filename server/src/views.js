@@ -1,5 +1,9 @@
 var database = require('./database.js')
-var MongoClient = require('mongodb').MongoClient
+var mongo_express = require('mongo-express/lib/middleware')
+var mongo_express_config = require('mongo-express/config.default.js')
+var MongoDB = require('mongodb')
+var MongoClient = MongoDB.MongoClient
+var ObjectID = MongoDB.ObjectID
 
 const url = 'mongodb://localhost:27017/sabanana'
 
@@ -12,6 +16,7 @@ function getUser (userID) {
     db => db.collection('user').find({_id: userID}).toArray()
   ).then(users => users[0])
 }
+
 
 function getAllPosts () {
   return getDB().then(
@@ -35,6 +40,18 @@ function getAllPosts () {
       )
     )
   )
+}
+function getUsersPosts (userID) {
+  return getDB().then(
+    db => db.collection('post').find({}).toArray()
+  ).then(posts => {
+  const AllPosts = getAllPosts()
+  const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
+  for (const post of Posts) {
+    post.author = getUser(post.authorID)
+  }
+  return Posts
+})
 }
 
 function getPost (id) {
@@ -73,39 +90,50 @@ function getThreads (userID) {
 }
 
 function getOrCreateThread (userID, otherUserID) {
-  const allThreads = database.readCollection('thread')
-  let thread = Object.values(allThreads)
-      .find(thread => thread.userIDs.indexOf(userID) !== -1 && thread.userIDs.indexOf(otherUserID) !== -1)
-  if (thread) {
-    return thread._id
-  }
-  return database.addDocument(
-    'thread',
-    {
-      userIDs: [userID, otherUserID],
-      messages: []
+  return getDB().then(
+    db => db.collection('thread').find(
+      {userIDs: {$all: [userID, otherUserID]}}
+    ).toArray()
+  ).then(
+    threads => {
+      if (threads.length > 0) {
+        return threads[0]._id
+      } else {
+        return getDB().then(
+          db => db.collection('thread').insertOne({
+            userIDs: [userID, otherUserID],
+            messages: []
+          }).then(op => op.insertedId))
+      }
     }
-  )._id
+  )
 }
 
 function sendMessage (threadID, userID, message) {
-  const thread = database.readDocument('thread', threadID)
-  const authorIndex = thread.userIDs.indexOf(userID)
-  thread.messages.push({
-    authorIndex: authorIndex,
-    content: message
-  })
-  database.writeDocument('thread', thread)
+  return getDB().then(
+    db => db.collection('thread').find({_id: threadID}).toArray()
+  ).then(
+    threads => {
+      console.log(threads)
+      const thread = threads[0]
+      const authorIndex = thread.userIDs.indexOf(userID)
+      return getDB().then(
+        db => db.collection('thread').update(
+          {_id: threadID},
+          {
+            $push: {
+              messages: {
+                authorIndex: authorIndex,
+                content: message
+              }
+            }
+          }
+        )
+      )
+    }
+  )
 }
 
-function getUsersPosts (userID) {
-  const AllPosts = getAllPosts()
-  const Posts = Object.values(AllPosts).filter((post) => post.authorID == userID)
-  for (const post of Posts) {
-    post.author = getUser(post.authorID)
-  }
-  return Posts
-}
 
 function getTags () {
   return getDB().then(
