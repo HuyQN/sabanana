@@ -6,62 +6,62 @@ var databaseName = "sabanana";
 var initialData = {
   'user': {
     '1': {
-      '_id': new ObjectID("000000000000000000000001"),
+      '_id': "000000000000000000000001",
       'name': 'Bob',
       'bio': 'Train club best club'
     },
     '2': {
-      '_id': new ObjectID("000000000000000000000002"),
+      '_id': "000000000000000000000002",
       'name': 'Jill',
       'bio': 'Insert very long text here'
     },
     '3': {
-      '_id': new ObjectID("000000000000000000000003"),
+      '_id': "000000000000000000000003",
       'name': 'Jack',
       'bio': 'Jill is very mean'
     },
     '4': {
-      '_id': new ObjectID("000000000000000000000004"),
+      '_id': "000000000000000000000004",
       'name': 'La-a',
       'bio': "It's pronounced Ladasha"
     }
   },
   'post': {
     '1': {
-      '_id': new ObjectID("000000000000000000000001"),
-      'authorID': new ObjectID("000000000000000000000002"),
+      '_id': "000000000000000000000001",
+      'authorID': "000000000000000000000002",
       'name': 'Looking Band',
       'description': 'I am looking for a group to create a band with. I know the guitar, and looking for some people that can play the bass or drum, and a singer',
       'tags': ['Music'],
       'date': 1452690900000
     },
     '2': {
-      '_id': new ObjectID("000000000000000000000002"),
-      'authorID': new ObjectID("000000000000000000000003"),
+      '_id': "000000000000000000000002",
+      'authorID': "000000000000000000000003",
       'name': 'Board Games',
       'description': 'Looking for a group of people to play Munchkins with',
       'tags': ['Board Games'],
       'date': 1453690900000
     },
     '3': {
-      '_id': new ObjectID("000000000000000000000003"),
-      'authorID': new ObjectID("000000000000000000000003"),
+      '_id': "000000000000000000000003",
+      'authorID': "000000000000000000000003",
       'name': 'Selling Monopoly',
       'description': 'Selling this disastor of a game. In decent condition, and everything is still here. Pm for price.',
       'tags': ['Selling'],
       'date': 1453830800000
     },
     '4': {
-      '_id': new ObjectID("000000000000000000000004"),
-      'authorID': new ObjectID("000000000000000000000001"),
+      '_id': "000000000000000000000004",
+      'authorID': "000000000000000000000001",
       'name': 'Football',
       'description': 'YO, I need to get my football game on, and need a few fellas to get a game on. We meeting up next Tuesday at 6p.m. to get our game on.',
       'tags': ['Sports'],
       'date': 1454003000000
     },
     '5': {
-      '_id': new ObjectID("000000000000000000000005"),
-      'authorID': new ObjectID("000000000000000000000004"),
+      '_id': "000000000000000000000005",
+      'authorID': "000000000000000000000004",
       'name': 'Trying to buy textbook for econ102',
       'description': 'I need the textbook for econ102, and will only pay $15 for it, no negotiations.',
       'tags': ['Buying'],
@@ -70,8 +70,8 @@ var initialData = {
   },
   thread: {
     1: {
-      _id: new ObjectID("000000000000000000000001"),
-      userIDs: [new ObjectID("000000000000000000000001"), new ObjectID("000000000000000000000002")],
+      _id: "000000000000000000000001",
+      userIDs: ["000000000000000000000001", "000000000000000000000002"],
       messages: [{
         authorIndex: 0,
         content: 'hey'
@@ -84,8 +84,8 @@ var initialData = {
       }]
     },
     2: {
-      _id: new ObjectID("000000000000000000000002"),
-      userIDs: [new ObjectID("000000000000000000000001"), new ObjectID("000000000000000000000003")],
+      _id: "000000000000000000000002",
+      userIDs: ["000000000000000000000001", "000000000000000000000003"],
       messages: [{
         authorIndex: 0,
         content: 'hey'
@@ -98,8 +98,8 @@ var initialData = {
       }]
     },
     3: {
-      _id: new ObjectID("000000000000000000000003"),
-      userIDs: [new ObjectID("000000000000000000000002"), new ObjectID("000000000000000000000003")],
+      _id: "000000000000000000000003",
+      userIDs: ["000000000000000000000002", "000000000000000000000003"],
       messages: [{
         authorIndex: 0,
         content: 'hey'
