@@ -39,7 +39,7 @@ MongoClient.connect(url, function(err, db){
     var body = req.body
     var date = new Date().getTime()
     var newPost = {
-      'authorID': new ObjectID(body.authorID),
+      'authorID': body.authorID,
       'name': body.name,
       'description': body.description,
       'tags': body.tags,
@@ -66,7 +66,7 @@ MongoClient.connect(url, function(err, db){
   // update post
   app.put('/post/:id', function (req, res) {
     var body = req.body
-    var postid = new ObjectID(req.params.id);
+    var postid = req.params.id;
     db.collection('post').findOne({ _id: postid}, function(err, object){
       console.log(object)
     })
@@ -97,7 +97,7 @@ app.get('/posts/', function (req, res) {
 })
 
 app.get('/post/:id', function (req, res) {
-  var id = new ObjectID(req.params.id)
+  var id = req.params.id
   views.getPost(id).then(post => res.send(post))
 })
 
@@ -132,6 +132,8 @@ app.get('/userPosts/:userID', function (req, res) {
 app.get('/tags/', function (req, res) {
   views.getTags().then(tags => res.send(tags))
 })
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
