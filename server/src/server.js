@@ -39,7 +39,6 @@ function createPost (author, name, description, tags) {
 };
 
 app.get('/posts/', function (req, res) {
-  views.getAllPosts().then(a => console.log(a))
   views.getAllPosts().then(a => res.send(a))
 })
 
@@ -63,7 +62,7 @@ app.get('/user/:id/messages/', function (req, res) {
 app.post('/user/:userID/messages/', function (req, res) {
   var userID = req.params.userID
   var otherUserID = req.body.otherUserID
-  res.send({id: views.getOrCreateThread(userID, otherUserID)})
+  views.getOrCreateThread(userID, otherUserID).then(id => res.send({id: id}))
 })
 
 app.put('/user/:userID/messages/:threadID', function (req, res) {

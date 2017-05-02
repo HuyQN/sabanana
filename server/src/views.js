@@ -73,19 +73,23 @@ function getThreads (userID) {
 }
 
 function getOrCreateThread (userID, otherUserID) {
-  const allThreads = database.readCollection('thread')
-  let thread = Object.values(allThreads)
-      .find(thread => thread.userIDs.indexOf(userID) !== -1 && thread.userIDs.indexOf(otherUserID) !== -1)
-  if (thread) {
-    return thread._id
-  }
-  return database.addDocument(
-    'thread',
-    {
-      userIDs: [userID, otherUserID],
-      messages: []
+  return getDB().then(
+    db => db.collection('thread').find(
+      {userIDs: {$all: [userID, otherUserID]}}
+    ).toArray()
+  ).then(
+    threads => {
+      if (threads.length > 0) {
+        return threads[0]._id
+      } else {
+        return getDB().then(
+          db => db.collection('thread').insertOne({
+            userIDs: [userID, otherUserID],
+            messages: []
+          }).then(op => op.insertedId))
+      }
     }
-  )._id
+  )
 }
 
 function sendMessage (threadID, userID, message) {
