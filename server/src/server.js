@@ -122,17 +122,8 @@ app.put('/user/:userID/messages/:threadID', function (req, res) {
 
 app.get('/user/:userId', function (req, res) {
   var userid = req.params.userId
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // userid is a string. We need it to be a number.
-  // Parameters are always strings.
-  var useridNumber = parseInt(userid, 10);
-  if (fromUser === useridNumber){
-  views.getUser(userid).then(user => res.send(user));
-} else {
-  //401: Unauthorized request
-  res.status(401).end();
-}
-});
+  views.getUser(userid).then(user => res.send(user))
+})
 
 app.get('/userPosts/:userID', function (req, res) {
   res.send(views.getUsersPosts(req.params.userID))

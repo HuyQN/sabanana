@@ -87,12 +87,7 @@ function sendXHR(verb, resource, body, cb) {
 export async function getUser (userID) {
   var hxr = new XMLHttpRequest();
   const response = await fetch(`http://localhost:3000/user/${userID}`)
-xhr.open(response);
-xhr.setRequestHeader('Authorization', 'Bearer jsontokenhere');
-xhr.addEventListener('load', function() {
   return response.json()
-});
-xhr.send();
 }
 
 export async function getThreads (userID) {
