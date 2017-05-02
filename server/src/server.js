@@ -129,10 +129,10 @@ app.get('/userPosts/:userID', function (req, res) {
   res.send(views.getUsersPosts(req.params.userID))
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
-
 app.get('/tags/', function (req, res) {
   views.getTags().then(tags => res.send(tags))
+})
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
 })
